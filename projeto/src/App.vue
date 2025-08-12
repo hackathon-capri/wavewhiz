@@ -126,8 +126,6 @@ const modules = [Pagination]
   font-size: 18px;
   background: #08607c;
   opacity: 60%;
-
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -230,12 +228,6 @@ hr {
   width: 28.5%;
   margin: 10px 0;
 }
-footer{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 40px 80px;
-}
 footer {
   display: flex;
   justify-content: space-between;
@@ -245,51 +237,33 @@ footer {
   font-family: 'Inter', sans-serif;
   gap: 40px;
 }
-
-/* logo e info */
 footer img {
   width: 120px;
   height: auto;
   margin-bottom: 10px;
 }
-
 .info {
   display: flex;
   flex-direction: column;
   max-width: 220px;
 }
-
 .info p {
   margin: 4px 0;
 }
-
 .info a {
   text-decoration: none;
   color: #f1f1f1;
   font-weight: bold;
 }
 
-/* listas (abas e categorias) */
 .aba-footer ul,
 .categoria-footer ul {
+  display: flex;
+  flex-direction: column;
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-.aba-footer li,
-.categoria-footer li {
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-}
-
-.aba-footer li:hover,
-.categoria-footer li:hover {
-  color: #ffe6b3;
-}
-
-/* social icons */
 .socialmedia {
   display: flex;
   flex-direction: column;
@@ -302,8 +276,4 @@ footer img {
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.socialmedia span:hover {
-  transform: scale(1.2);
-  color: #ffe6b3;
-}
 </style>
