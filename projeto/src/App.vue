@@ -2,9 +2,11 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
 const modules = [Pagination]
+import CadastroComponent from './components/CadastroComponent.vue'
 </script>
 
 <template>
+  <cadastro-component></cadastro-component>
   <div class="container">
     <header>
       <nav>
