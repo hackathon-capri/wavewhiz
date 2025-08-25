@@ -19,6 +19,8 @@ const modules = [Pagination]
             <li class="sobre"><a href="#">Sobre</a></li>
             <li class="icons"><span class="fa-solid fa-user"></span></li>
             <li class="icons"><span class="fa-solid fa-list"></span></li>
+            <li class="icons"><span class="fa-solid fa-bookmark"></span></li>
+            <li class="icons"><span class="fa-solid fa-cart-shopping"></span></li>
           </ul>
         </div>
         <div class="categorias">
