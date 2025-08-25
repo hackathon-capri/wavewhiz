@@ -18,7 +18,8 @@ const modules = [Pagination]
             <li class="icons"><span class="fa-solid fa-house"></span></li>
             <li class="sobre"><a href="#">Sobre</a></li>
             <li class="icons"><span class="fa-solid fa-user"></span></li>
-            <li class="icons"><span class="fa-solid fa-list"></span></li>
+            <li class="icons"><span class="fa-solid fa-bookmark"></span></li>
+            <li class="icons"><span class="fa-solid fa-cart-shopping"></span></li>
           </ul>
         </div>
         <div class="categorias">
@@ -157,6 +158,9 @@ ul li {
 
 li.icons {
   font-size: 1.5rem;
+}
+li.sobre {
+  padding: 11px 0 0 0;
 }
 
 ul li a {
