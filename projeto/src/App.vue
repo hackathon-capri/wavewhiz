@@ -3,11 +3,14 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
 const modules = [Pagination]
 import CadastroComponent from './components/CadastroComponent.vue'
+import { ref } from 'vue';
+const showLogin = ref(false);
 </script>
 
 <template>
-  <cadastro-component></cadastro-component>
-  <div class="container">
+    <cadastro-component v-if="showLogin" @close="showLogin = false"></cadastro-component>
+  <div class="container"></div>
+  <section v-if="!showLogin">
     <header>
       <nav>
         <div class="logo"><h1>WaveWhiz</h1></div>
@@ -19,7 +22,7 @@ import CadastroComponent from './components/CadastroComponent.vue'
           <ul>
             <li class="icons"><span class="fa-solid fa-house"></span></li>
             <li class="sobre"><a href="#">Sobre</a></li>
-            <li class="icons"><span class="fa-solid fa-user"></span></li>
+            <li class="icons"><span class="fa-solid fa-user" @click="showLogin = true"></span></li>
             <li class="icons"><span class="fa-solid fa-list"></span></li>
           </ul>
         </div>
@@ -64,8 +67,9 @@ import CadastroComponent from './components/CadastroComponent.vue'
               <p>teste2</p>
               <p>teste2</p>
               <p>teste2</p>
-            </div> </swiper-slide
-          ><swiper-slide>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
             <div class="card3">
               <h1>teste3</h1>
               <p>teste2</p>
@@ -102,7 +106,7 @@ import CadastroComponent from './components/CadastroComponent.vue'
          </div>
          <div class="categoria-footer">
            <ul>
-          <li>lojas</li>
+          <li>Lojas</li>
           <li>Artesanato</li>
           <li>Roupas</li>
           <li>Alimentação</li>
@@ -114,7 +118,7 @@ import CadastroComponent from './components/CadastroComponent.vue'
            <span class="fa-brands fa-linkedin"></span>
          </div>
     </footer>
-  </div>
+  </section>
 </template>
 <style scoped>
 .swiper {

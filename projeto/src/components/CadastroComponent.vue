@@ -9,17 +9,23 @@
 
     </header>
     <main>
+        <button @click="$emit('close')">Fechar</button>
         <section>
             <div class="quadrado">
-                <h1>Como você quer se cadastrar?</h1>
-                    <ul>
-                        <li>
-                            <button>Empreendedor</button>
-                        </li>
-                        <li>
-                            <button>Cliente</button>
-                        </li>
-                    </ul>
+              <div class="detalhes">
+                <div class="login">
+                  <img src="/public/login-icon.png" alt="">
+                  <h1>Como você quer se cadastrar?</h1>
+                </div>
+                <ul>
+                  <li>
+                    <span class="button">EMPREENDEDOR</span>
+                  </li>
+                  <li>
+                    <span class="button">CLIENTE</span>
+                  </li>
+                </ul>
+              </div>
             </div>
         </section>
     </main>
@@ -41,7 +47,7 @@
          </div>
          <div class="categoria-footer">
            <ul>
-          <li>lojas</li>
+          <li>Lojas</li>
           <li>Artesanato</li>
           <li>Roupas</li>
           <li>Alimentação</li>
@@ -56,6 +62,9 @@
 </template>
 
 <style scoped>
+main {
+  font-family: 'Inter', sans-serif;
+}
 .formas {
   display: flex;
   gap: 20px;
@@ -66,9 +75,42 @@
   height: 600px;
   background-color: #08607C;
 }
-.quadrado ul li a {
-    display: flex;
+.detalhes {
+  text-align: center;
+  color: white;
+  padding: 5vw 0 0 0;
 }
+.detalhes h1 {
+  padding: 1.5vw 0 0 0;
+}
+.detalhes ul {
+  padding: 3vw 0 0 0;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+.detalhes ul li {
+  padding: 0 5vw 0 5vw;
+}
+.button {
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: 4px solid white;
+  color: white;
+  display: inline-block;
+  border-radius: 40px;
+  font-weight: bold;
+  width: 20vw;
+  padding: 4vw 0 4vw 0;
+}
+
+.button:hover {
+  background-color: white;
+  color: #08607C;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
