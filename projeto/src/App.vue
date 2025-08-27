@@ -3,11 +3,13 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
 const modules = [Pagination]
 import CadastroComponent from './components/CadastroComponent.vue'
+import EmpreendedorComponent from './components/EmpreendedorComponent.vue'
 import { ref } from 'vue';
 const showLogin = ref(false);
 </script>
 
 <template>
+  <empreendedor-component></empreendedor-component>
     <cadastro-component v-if="showLogin" @close="showLogin = false"></cadastro-component>
   <div class="container"></div>
   <section v-if="!showLogin">
@@ -22,7 +24,7 @@ const showLogin = ref(false);
           <ul>
             <li class="icons"><span class="fa-solid fa-house"></span></li>
             <li class="sobre"><a href="#">Sobre</a></li>
-            <li class="icons"><span class="fa-solid fa-user" @click="showLogin = true"></span></li>
+            <li class="icons"><span class="fa-solid fa-user" @click="showLogin = true" style="cursor: pointer;"></span></li>
             <li class="icons"><span class="fa-solid fa-list"></span></li>
           </ul>
         </div>
@@ -99,7 +101,7 @@ const showLogin = ref(false);
            <ul>
           <li>Inicio</li>
           <li>Sobre</li>
-          <li>Cadastro</li>
+          <li @click="showLogin = true" style="cursor: pointer;">Cadastro</li>
           <li>Salvos</li>
           <li>Carrinho</li>
          </ul>

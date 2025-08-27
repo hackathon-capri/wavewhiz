@@ -1,7 +1,7 @@
 <script>
     export default {
   name: "FormasSimples"
-  }
+}
 </script>
 
 <template>
@@ -12,18 +12,8 @@
         <section>
             <div class="quadrado">
               <div class="detalhes">
-                <div class="login">
                   <img src="/public/login-icon.png" alt="">
-                  <h1>Como você quer se cadastrar?</h1>
-                </div>
-                <ul>
-                  <li>
-                    <span class="button">EMPREENDEDOR</span>
-                  </li>
-                  <li>
-                    <span class="button">CLIENTE</span>
-                  </li>
-                </ul>
+                  <h1>Cadastre-se como empreendedor:</h1>
               </div>
             </div>
         </section>
@@ -37,7 +27,7 @@
          </div>
          <div class="aba-footer">
            <ul>
-          <li @click="$emit('close')" style="cursor: pointer;">Início</li>
+          <li>Início</li>
           <li>Sobre</li>
           <li>Cadastro</li>
           <li>Salvos</li>
@@ -63,6 +53,7 @@
 <style scoped>
 main {
   font-family: 'Inter', sans-serif;
+  background-color: #04394A;
 }
 .formas {
   display: flex;
@@ -70,44 +61,31 @@ main {
 }
 .quadrado {
   margin: 5vw auto 5vw auto;
-  width: 1300px;
+  width: 1400px;
   height: 600px;
-  background-color: #08607C;
+  background: #04394A;
+  border: #f1f1f1 4px solid;
+  display: flex;
+  justify-content: center;
+  align-items: self-start;
 }
 .detalhes {
   text-align: center;
   color: white;
-  padding: 5vw 0 0 0;
+  padding: 2vw 0 0 0;
+}
+.detalhes img {
+  padding: 0 0 1.5vw 0;
 }
 .detalhes h1 {
   padding: 1.5vw 0 0 0;
-}
-.detalhes ul {
-  padding: 3vw 0 0 0;
+  font-size: 1.3rem;
+  background-color: #08607C;
+  border-radius: 60px;
+  width: 35vw;
+  padding: 1vw 0 1vw 0 ;
   display: flex;
-  list-style: none;
   justify-content: center;
-}
-.detalhes ul li {
-  padding: 0 5vw 0 5vw;
-}
-.button {
-  font-size: 1.5rem;
-  background-color: transparent;
-  border: 4px solid white;
-  color: white;
-  display: inline-block;
-  border-radius: 40px;
-  font-weight: bold;
-  width: 20vw;
-  padding: 4vw 0 4vw 0;
-}
-
-.button:hover {
-  background-color: white;
-  color: #08607C;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
 footer {
@@ -118,7 +96,6 @@ footer {
   color: #f1f1f1;
   font-family: 'Inter', sans-serif;
   gap: 40px;
-  background-color: #04394A;
 }
 footer img {
   width: 120px;
