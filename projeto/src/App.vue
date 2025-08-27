@@ -164,17 +164,16 @@ function addToCart(product) {
                 </tr>
               </tbody>
             </table>
-            <button @click="showCart = false" class="outlined">Voltar para loja</button>
           </div>
           <div class="cart-summary">
             <div class="summary">
-              <h2>Total da Compra</h2>
+              <h2>Subtotal</h2>
+              <hr class="linha-cart">
               <div class="summary-items">
                 <span>Produtos</span> <span>R$ {{ cart.total.toFixed(2) }}</span>
-                <span>Frete</span> <span>Grátis</span> <span>Total</span>
-                <span>R$ {{ cart.total.toFixed(2) }}</span>
               </div>
-              <button>Ir para pagamento</button>
+              <hr class="linha-cart">
+              <button>Ir para o pagamento</button>
             </div>
           </div>
         </div>
@@ -541,14 +540,31 @@ td {
 .cart-summary {
   display: flex;
   width: 100%;
-  background-color:#dbdcdc
+  background-color:#dbdcdc;
+  margin: 0 0 0 5vw;
+  padding: 20px 15px 18vw 20px;
+}
+.cart-summary button{
+  padding: 12px 65px 12px 65px;
+  margin: 6vw 0.5vw 0 0.5vw;
+  border: none;
+  background: #08607C;
+  color: white;
+  font-weight: bold;
+}
+.summary{
+  margin: 5vw 0 0 0.8vw;
 }
 .summary h2 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: black;
+  color: #08607C;
+  margin: 0 0 1vw 0;
 }
-
+hr.linha-cart {
+  border-bottom: 2px solid #08607C;
+  width: 100%;
+}
 .summary-items {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -556,9 +572,8 @@ td {
 
 .summary-items span {
   padding: 10px 0;
-  border-bottom: 1px solid rgb(128, 128, 128);
+  color: #08607C;
 }
-
 button {
   margin-top: 20px;
   cursor: pointer;
