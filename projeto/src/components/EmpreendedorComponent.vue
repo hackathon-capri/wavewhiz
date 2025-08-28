@@ -1,53 +1,90 @@
-<script>
-    export default {
-  name: "FormasSimples"
+<script setup>
+function handleSubmit() {
+  const nome = document.getElementById("nome").value;
+  const telefone = document.getElementById("telefone").value;
+  const cpf = document.getElementById("cpf").value;
+  const categoria = document.getElementById("categoria").value;
+  const nomeEmpreendedor = document.getElementById("nomeEmpreendedor").value;
+  const dataNascimento = document.getElementById("dataNascimento").value;
+
+  console.log("Enviado:", {
+    nome,
+    telefone,
+    cpf,
+    categoria,
+    nomeEmpreendedor,
+    dataNascimento
+  });
 }
 </script>
 
 <template>
-    <header>
-
-    </header>
-    <main>
-        <section>
-            <div class="quadrado">
-              <div class="detalhes">
-                  <img src="/public/login-icon.png" alt="">
-                  <h1>Cadastre-se como empreendedor:</h1>
-              </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-         <img src="/public/logo-footer.png" alt="" />
-         <div class="info">
-            <p>Desenvolvimento:</p>
-            <p>Ana Paula, Anna Flávia, Emilly, Kelly, Pietra.</p>
-            <p><a href="tel:+5547999205622">+55 (47) 9 9920-5622</a></p>
+  <main>
+    <section>
+      <div class="quadrado">
+        <div class="detalhes">
+          <img src="/public/login-icon.png" alt="">
+          <h1>Cadastre-se como empreendedor:</h1>
+        </div>
+      </div>
+      <form @submit.prevent="handleSubmit">
+        <div class="formulario">
+        <div class="esquerda">
+          <ul class="lista">
+            <li>
+              <label for="nome">Nome da loja:</label>
+              <input type="text" id="nome" placeholder="Nome">
+            </li>
+            <li>
+              <label for="telefone">Telefone:</label>
+              <input type="tel" id="telefone" placeholder="(47) 99999-9999" maxlength="15">
+            </li>
+            <li>
+              <label for="cpf">CPF/CNPJ:</label>
+              <input type="text" id="cpf" placeholder="CPF/CNPJ">
+            </li>
+            <li>
+              <label for="categoria">Categorias:</label>
+              <input type="text" list="listaCategorias" id="categoria" placeholder="Escolha uma categoria">
+              <datalist id="listaCategorias">
+                <option value="Alimentos" />
+                <option value="Roupas" />
+                <option value="Artesanatos" />
+              </datalist>
+            </li>
+          </ul>
+        </div>
+        <div class="direita">
+          <ul class="lista2">
+            <li>
+              <label for="nomeEmpreendedor">Nome do empreendedor:</label>
+              <input type="text" id="nomeEmpreendedor" placeholder="Nome">
+            </li>
+            <li>
+              <label for="dataNascimento">Data de nascimento:</label>
+              <input type="date" id="dataNascimento">
+            </li>
+            <li>
+              <label for="telefone">Telefone do empreendedor:</label>
+              <input type="tel" id="telefoneEmpreendedor" placeholder="Telefone do Empreendedor">
+            </li>
+            <li>
+              <label for="email">E-mail:</label>
+              <input type="email" id="email" placeholder="exemplo@email" v-model="email" required>
+            </li>
+            <li>
+              <button type="submit">Enviar</button>
+            </li>
+          </ul>
+        </div>
+        <div class="botao">
+          <button>+</button>
+          <p>Insira sua logo</p>
+        </div>
          </div>
-         <div class="aba-footer">
-           <ul>
-          <li>Início</li>
-          <li>Sobre</li>
-          <li>Cadastro</li>
-          <li>Salvos</li>
-          <li>Carrinho</li>
-         </ul>
-         </div>
-         <div class="categoria-footer">
-           <ul>
-          <li>Lojas</li>
-          <li>Artesanato</li>
-          <li>Roupas</li>
-          <li>Alimentação</li>
-          <li>Outros</li>
-         </ul>
-         </div>
-             <div class="socialmedia">
-           <span class="fa-brands fa-square-instagram"></span>
-           <span class="fa-brands fa-linkedin"></span>
-         </div>
-    </footer>
+      </form>
+    </section>
+  </main>
 </template>
 
 <style scoped>
@@ -134,5 +171,39 @@ footer img {
 .socialmedia span {
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  
+ 
+}
+
+.botao {
+  width: 160px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: larger;
+}
+
+.esquerda{
+  margin: 0 5vw 0 20vw;
+  color: #FFFFFF;
+  font-size: 25px;
+}
+
+.direita{
+  margin: 0 5vw 0 0vw;
+  color: #FFFFFF;
+  font-size: 25px;
+}
+
+.lista{
+  list-style: none;
+}
+.lista2{
+  list-style: none;
 }
 </style>
