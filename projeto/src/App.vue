@@ -11,6 +11,19 @@ const cart = ref({
   total: 0,
 })
 
+const showPayment = ref(false)
+const payment = ref({
+  itens: [],
+  total: 0,
+})
+
+function goToPayment() {
+  showCart.value = false
+  showPayment.value = true
+}
+
+const selected = ref('op1')
+
 const products = [
   {
     id: 1,
@@ -136,6 +149,7 @@ function addToCart(product) {
                   <th>N° Itens</th>
                   <th>Valor</th>
                 </tr>
+                <hr class="linha-th" />
               </thead>
               <tbody>
                 <tr v-for="product in cart.items" :key="product.id">
@@ -168,15 +182,34 @@ function addToCart(product) {
           <div class="cart-summary">
             <div class="summary">
               <h2>Subtotal</h2>
-              <hr class="linha-cart">
+              <hr class="linha-cart" />
               <div class="summary-items">
                 <span>Produtos</span> <span>R$ {{ cart.total.toFixed(2) }}</span>
               </div>
-              <hr class="linha-cart">
-              <button>Ir para o pagamento</button>
+              <hr class="linha-cart" />
+              <button @click="goToPayment">Ir para o pagamento</button>
             </div>
           </div>
         </div>
+      </section>
+    </main>
+    <main v-else-if="showPayment">
+      <section class="payment">
+        <section class="bandeiras">
+          <div class="opcoes">
+            <input type="radio" id="op1" value="op1" v-model="selected" name="bolinhas" />
+            <label for="op1"><img src="/public/caixa-removebg-preview 1.png" alt="" /></label>
+
+            <input type="radio" id="op2" value="op2" v-model="selected" name="bolinhas" />
+            <label for="op2"><img src="/public/Elo-removebg-preview 1.png" alt="" /></label>
+
+            <input type="radio" id="op3" value="op3" v-model="selected" name="bolinhas" />
+            <label for="op3"><img src="/public/Visa-removebg-preview 1.png" alt="" /></label>
+
+            <input type="radio" id="op4" value="op4" v-model="selected" name="bolinhas" />
+            <label for="op4"><img src="/public/Mastercard-removebg-preview 1.png" alt="" /></label>
+          </div>
+        </section>
       </section>
     </main>
     <main v-else>
@@ -234,7 +267,6 @@ function addToCart(product) {
         </swiper>
       </div>
     </main>
-
     <footer>
       <img src="/public/logo-footer.png" alt="" />
       <div class="info">
@@ -477,11 +509,11 @@ table {
 }
 th,
 td {
-  padding: 10px;
+  margin: 0 0 0 2vw;
+  padding: 2vw;
   text-align: left;
 }
 th {
-  border-bottom: 2px solid #08607c;
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -490,7 +522,11 @@ td {
   border-bottom: 1px solid rgb(128, 128, 128);
   font-size: 1rem;
 }
-
+hr.linha-th {
+  border-bottom: 2px solid #08607c;
+  margin: 0 0 0 1vw;
+  width: 100%;
+}
 .cart-item-quantity {
   display: flex;
   align-items: center;
@@ -536,33 +572,33 @@ td {
   background-color: #f1f1f1;
 }
 
-/* =====  ===== */
+/* ===== Cart ===== */
 .cart-summary {
   display: flex;
   width: 100%;
-  background-color:#dbdcdc;
+  background-color: #dbdcdc;
   margin: 0 0 0 5vw;
   padding: 20px 15px 18vw 20px;
 }
-.cart-summary button{
+.cart-summary button {
   padding: 12px 65px 12px 65px;
   margin: 6vw 0.5vw 0 0.5vw;
   border: none;
-  background: #08607C;
+  background: #08607c;
   color: white;
   font-weight: bold;
 }
-.summary{
+.summary {
   margin: 5vw 0 0 0.8vw;
 }
 .summary h2 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #08607C;
+  color: #08607c;
   margin: 0 0 1vw 0;
 }
 hr.linha-cart {
-  border-bottom: 2px solid #08607C;
+  border-bottom: 2px solid #08607c;
   width: 100%;
 }
 .summary-items {
@@ -572,10 +608,38 @@ hr.linha-cart {
 
 .summary-items span {
   padding: 10px 0;
-  color: #08607C;
+  color: #08607c;
 }
 button {
   margin-top: 20px;
   cursor: pointer;
 }
+
+/* ===== Payment ===== */
+.payment {
+  background: white;
+}
+.bandeiras ul {
+  display: flex;
+}
+.bandeiras label {
+  background: #dbdcdc;
+  padding: 8px;
+  margin: 5vw 5vw 5vw 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 80px;
+}
+.bandeiras input {
+    margin: 5vw 0 5vw 5vw;
+}
+.opcoes {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+}
+
 </style>
