@@ -13,11 +13,11 @@ import router from '@/router';
       </div>
       <div class="aba-footer">
         <ul>
-          <li>Inicio</li>
+          <li @click="router.push('/')" style="cursor: pointer;">Inicio</li>
           <li>Sobre</li>
           <li @click="router.push('/cadastro')" style="cursor: pointer;">Cadastro</li>
           <li>Salvos</li>
-          <li>Carrinho</li>
+          <li @click="router.push('/carrinho')" style="cursor: pointer;">Carrinho</li>
          </ul>
          </div>
          <div class="categoria-footer">

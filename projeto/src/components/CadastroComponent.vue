@@ -15,7 +15,7 @@
                     <span class="button" @click="emit('mostrarEmpreendedor')">EMPREENDEDOR</span>
                   </li>
                   <li>
-                    <span class="button">CLIENTE</span>
+                    <span class="button" @click="emit('mostrarCliente')">CLIENTE</span>
                   </li>
                 </ul>
               </div>
