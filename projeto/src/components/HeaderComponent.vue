@@ -13,7 +13,7 @@ import router from '@/router';
         </div>
         <div class="abas">
           <ul>
-            <li class="icons"><span class="fa-solid fa-house"></span></li>
+            <li @click="router.push('/')" class="icons"><span class="fa-solid fa-house"></span></li>
             <li class="sobre"><a href="#">Sobre</a></li>
             <li @click="router.push('/cadastro')" class="icons"><span class="fa-solid fa-user"></span></li>
             <li class="icons"><span class="fa-solid fa-bookmark"></span></li>
