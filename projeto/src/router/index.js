@@ -8,6 +8,16 @@ const routes = [
         component: HomeView,
     },
     {
+      path: '/cadastro',
+      name: 'Cadastro',
+      component: () => import('@/views/CadastroView.vue')
+    },
+    {
+      path: '/carrinho',
+      name: 'Carrinho',
+      component: () => import('@/views/CarrinhoView.vue')
+    },
+    {
         path: '/livro/:id',
         name: 'Produto',
         component: () => import('@/views/ProductView.vue'),
