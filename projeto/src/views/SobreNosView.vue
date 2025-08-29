@@ -22,6 +22,11 @@
   </main>
 </template>
 <style scoped>
+main{
+  border: 2px solid white;
+  width: 80%;
+  margin: 5vw 0 5vw 10vw;
+}
 h1{
   margin: 4vw 18vw 2vw 20vw;
   text-align: center;
@@ -37,7 +42,7 @@ h1{
  margin: 1vw 0 10vw 0;
 }
 .esquerda{
-  margin: 0 0 0 20vw;
+  margin: 0 0 0 15vw;
 }
 .direita{
   margin: 0 0 0 6vw;
