@@ -2,6 +2,8 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { ref } from 'vue'
 import { Pagination } from 'swiper/modules'
+import CadastroComponent from './components/CadastroComponent.vue'
+import EmpreendedorComponent from './components/EmpreendedorComponent.vue'
 
 const modules = [Pagination]
 
@@ -111,10 +113,14 @@ function addToCart(product) {
   cart.value.total += product.price
   alert(`Adicionado ${product.title} ao carrinho!`)
 }
+const showLogin = ref(false);
 </script>
 
 <template>
-  <div class="container">
+  <empreendedor-component></empreendedor-component>
+    <cadastro-component v-if="showLogin" @close="showLogin = false"></cadastro-component>
+  <div class="container"></div>
+  <section v-if="!showLogin">
     <header>
       <nav>
         <div class="logo"><h1>WaveWhiz</h1></div>
@@ -131,6 +137,8 @@ function addToCart(product) {
             <li @click="showCart = !showCart" class="icons">
               <span class="fa-solid fa-cart-shopping"></span>
             </li>
+            <li class="icons"><span class="fa-solid fa-user" @click="showLogin = true" style="cursor: pointer;"></span></li>
+            <li class="icons"><span class="fa-solid fa-list"></span></li>
           </ul>
         </div>
         <div class="categorias">
@@ -278,14 +286,14 @@ function addToCart(product) {
         <ul>
           <li>Inicio</li>
           <li>Sobre</li>
-          <li>Cadastro</li>
+          <li @click="showLogin = true" style="cursor: pointer;">Cadastro</li>
           <li>Salvos</li>
           <li>Carrinho</li>
-        </ul>
-      </div>
-      <div class="categoria-footer">
-        <ul>
-          <li>lojas</li>
+         </ul>
+         </div>
+         <div class="categoria-footer">
+           <ul>
+          <li>Lojas</li>
           <li>Artesanato</li>
           <li>Roupas</li>
           <li>Alimentação</li>
@@ -297,7 +305,7 @@ function addToCart(product) {
         <span class="fa-brands fa-linkedin"></span>
       </div>
     </footer>
-  </div>
+  </section>
 </template>
 
 <style scoped>
