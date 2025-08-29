@@ -1,24 +1,22 @@
 <script setup>
 function handleSubmit() {
-  const nome = document.getElementById("nome").value;
-  const endereco = document.getElementById("endereco").value;
-  const telefone = document.getElementById("telefoneEmpreendedor").value;
-  const cpf = document.getElementById("cpf").value;
-  const categoria = document.getElementById("categoria").value;
-  const nomeEmpreendedor = document.getElementById("nomeEmpreendedor").value;
-  const dataNascimento = document.getElementById("dataNascimento").value;
-  const email = document.getElementById("email").value;
+  const nome = document.getElementById('nome').value
+  const endereco = document.getElementById('endereco').value
+  const cpf = document.getElementById('cpf').value
+  const dataNascimento = document.getElementById('dataNascimento').value
+  const email = document.getElementById('email').value
+  const ruaNumero = document.getElementById('ruaNumero').value
+  const complemento = document.getElementById('complemento').value
 
-  console.log("Enviado:", {
+  console.log('Enviado:', {
     nome,
     endereco,
-    telefone,
     cpf,
-    categoria,
-    nomeEmpreendedor,
     dataNascimento,
-    email
-  });
+    email,
+    ruaNumero,
+    complemento,
+  })
 }
 </script>
 
@@ -28,58 +26,53 @@ function handleSubmit() {
       <div class="quadrado">
         <div class="detalhes">
           <img src="/public/login-icon.png" alt="Ícone de login" />
-          <h1>Cadastre-se como empreendedor:</h1>
+          <h1>Cadastre-se como cliente:</h1>
         </div>
 
         <form @submit.prevent="handleSubmit">
           <div class="formulario">
             <ul class="lista">
               <li>
-                <label for="nome">Nome da loja:</label>
-                <input type="text" id="nome" required>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" required />
               </li>
               <li>
                 <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" maxlength="100" required>
+                <input type="text" id="endereco" maxlength="100" required />
               </li>
               <li>
                 <label for="cpf">CPF/CNPJ:</label>
-                <input type="text" id="cpf" required>
+                <input type="text" id="cpf" required />
               </li>
               <li>
-                <label for="categoria">Categorias:</label>
-                <input type="text" list="listaCategorias" id="categoria" required>
-                <datalist id="listaCategorias">
-                  <option value="Alimentos" />
-                  <option value="Roupas" />
-                  <option value="Artesanatos" />
-                </datalist>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" required />
               </li>
             </ul>
 
             <ul class="lista2">
               <li>
-                <label for="nomeEmpreendedor">Nome do empreendedor:</label>
-                <input type="text" id="nomeEmpreendedor" required>
-              </li>
-              <li>
                 <label for="dataNascimento">Data de nascimento:</label>
-                <input type="date" id="dataNascimento" required>
+                <input type="date" id="dataNascimento" required />
               </li>
               <li>
-                <label for="telefoneEmpreendedor">Telefone:</label>
-                <input type="tel" id="telefoneEmpreendedor" required>
+                <label for="cpf">CEP:</label>
+                <input type="text" id="cep" required />
               </li>
               <li>
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" required>
+                <label for="cpf">Rua/Número:</label>
+                <input type="text" id="ruaNumero" required />
+              </li>
+              <li>
+                <label for="cpf">Complemento:</label>
+                <input type="text" id="completo" required />
               </li>
             </ul>
 
             <div class="lado-direito">
               <label for="logo" class="upload-logo">+</label>
               <p>Insira sua logo:</p>
-              <input type="file" id="logo" name="logo" accept="image/*" style="display: none;">
+              <input type="file" id="logo" name="logo" accept="image/*" style="display: none" />
             </div>
           </div>
 
@@ -98,7 +91,7 @@ function handleSubmit() {
   margin: 5vw auto;
   width: 1400px;
   min-height: 600px;
-  background: #04394A;
+  background: #04394a;
   border: #f1f1f1 4px solid;
   padding: 2rem;
   box-sizing: border-box;
@@ -119,7 +112,7 @@ function handleSubmit() {
 
 .detalhes h1 {
   font-size: 1.4rem;
-  background-color: #08607C;
+  background-color: #08607c;
   border-radius: 20px;
   padding: 0.6rem 1.5rem;
   text-align: center;
@@ -139,7 +132,8 @@ form {
   flex-wrap: wrap;
 }
 
-.lista, .lista2 {
+.lista,
+.lista2 {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -150,7 +144,8 @@ form {
   min-width: 280px;
 }
 
-.lista li, .lista2 li {
+.lista li,
+.lista2 li {
   color: white;
   font-weight: bold;
   display: flex;
@@ -192,7 +187,7 @@ input:focus {
 }
 
 .botoes button {
-  background-color: #08607C;
+  background-color: #08607c;
   color: white;
   border: none;
   padding: 10px 30px;
@@ -206,7 +201,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #08607C;
+  background-color: #08607c;
   color: white;
   font-weight: bold;
   padding: 1rem;
