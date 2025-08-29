@@ -1,14 +1,8 @@
-<script>
-    export default {
-  name: "FormasSimples"
-  }
+<script setup>
+  const emit = defineEmits(['mostrarEmpreendedor'])
 </script>
 
 <template>
-    <header>
-
-    </header>
-    <main>
         <section>
             <div class="quadrado">
               <div class="detalhes">
@@ -18,7 +12,7 @@
                 </div>
                 <ul>
                   <li>
-                    <span class="button">EMPREENDEDOR</span>
+                    <span class="button" @click="emit('mostrarEmpreendedor')">EMPREENDEDOR</span>
                   </li>
                   <li>
                     <span class="button">CLIENTE</span>
@@ -27,37 +21,7 @@
               </div>
             </div>
         </section>
-    </main>
-    <footer>
-         <img src="/public/logo-footer.png" alt="" />
-         <div class="info">
-            <p>Desenvolvimento:</p>
-            <p>Ana Paula, Anna Flávia, Emilly, Kelly, Pietra.</p>
-            <p><a href="tel:+5547999205622">+55 (47) 9 9920-5622</a></p>
-         </div>
-         <div class="aba-footer">
-           <ul>
-          <li @click="$emit('close')" style="cursor: pointer;">Início</li>
-          <li>Sobre</li>
-          <li>Cadastro</li>
-          <li>Salvos</li>
-          <li>Carrinho</li>
-         </ul>
-         </div>
-         <div class="categoria-footer">
-           <ul>
-          <li>Lojas</li>
-          <li>Artesanato</li>
-          <li>Roupas</li>
-          <li>Alimentação</li>
-          <li>Outros</li>
-         </ul>
-         </div>
-             <div class="socialmedia">
-           <span class="fa-brands fa-square-instagram"></span>
-           <span class="fa-brands fa-linkedin"></span>
-         </div>
-    </footer>
+
 </template>
 
 <style scoped>
