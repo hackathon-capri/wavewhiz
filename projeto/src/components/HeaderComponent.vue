@@ -15,7 +15,7 @@ import router from '@/router';
           <ul>
             <li class="icons"><span class="fa-solid fa-house"></span></li>
             <li class="sobre"><a href="#">Sobre</a></li>
-            <li class="icons"><span class="fa-solid fa-user"></span></li>
+            <li @click="router.push('/cadastro')" class="icons"><span class="fa-solid fa-user"></span></li>
             <li class="icons"><span class="fa-solid fa-bookmark"></span></li>
             <li @click="router.push('/carrinho')" class="icons">
               <span class="fa-solid fa-cart-shopping"></span>
@@ -36,7 +36,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 5px;
+  margin: 0 0 0 10px;
 }
 
 ul {
@@ -98,6 +98,7 @@ ul li.sobre a {
 }
 .sobre {
   margin: 11px 0 0 0;
+  font-weight: bold;
 }
 
 </style>

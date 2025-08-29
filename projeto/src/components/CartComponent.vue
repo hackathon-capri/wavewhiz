@@ -51,7 +51,7 @@
           <span>Produtos</span> <span>R$ {{ cart.total.toFixed(2) }}</span> <span>Frete</span>
           <span> Grátis</span> <span>Total</span> <span>R$ {{ cart.total.toFixed(2) }}</span>
         </div>
-        <button>Ir para pagamento</button>
+        <button @click="router.push('/')">Ir para pagamento</button>
       </div>
     </div>
   </section>
