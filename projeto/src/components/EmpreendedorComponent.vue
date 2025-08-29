@@ -26,26 +26,23 @@ function handleSubmit() {
           <img src="/public/login-icon.png" alt="">
           <h1>Cadastre-se como empreendedor:</h1>
         </div>
-      </div>
-      <form @submit.prevent="handleSubmit">
-        <div class="formulario">
-        <div class="esquerda">
+        <form @submit.prevent="handleSubmit">
           <ul class="lista">
             <li>
               <label for="nome">Nome da loja:</label>
-              <input type="text" id="nome" placeholder="Nome">
+              <input type="text" id="nome" placeholder="">
             </li>
             <li>
-              <label for="telefone">Telefone:</label>
-              <input type="tel" id="telefone" placeholder="(47) 99999-9999" maxlength="15">
+              <label for="endereco">Endereço</label>
+              <input type="text" id="telefone" maxlength="15">
             </li>
             <li>
               <label for="cpf">CPF/CNPJ:</label>
-              <input type="text" id="cpf" placeholder="CPF/CNPJ">
+              <input type="text" id="cpf">
             </li>
             <li>
               <label for="categoria">Categorias:</label>
-              <input type="text" list="listaCategorias" id="categoria" placeholder="Escolha uma categoria">
+              <input type="text" list="listaCategorias" id="categoria">
               <datalist id="listaCategorias">
                 <option value="Alimentos" />
                 <option value="Roupas" />
@@ -53,157 +50,108 @@ function handleSubmit() {
               </datalist>
             </li>
           </ul>
-        </div>
-        <div class="direita">
           <ul class="lista2">
             <li>
               <label for="nomeEmpreendedor">Nome do empreendedor:</label>
-              <input type="text" id="nomeEmpreendedor" placeholder="Nome">
+              <input type="text" id="nomeEmpreendedor" required>
             </li>
             <li>
               <label for="dataNascimento">Data de nascimento:</label>
-              <input type="date" id="dataNascimento">
+              <input type="date" id="dataNascimento" required>
             </li>
             <li>
-              <label for="telefone">Telefone do empreendedor:</label>
-              <input type="tel" id="telefoneEmpreendedor" placeholder="Telefone do Empreendedor">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefoneEmpreendedor" required>
             </li>
             <li>
               <label for="email">E-mail:</label>
-              <input type="email" id="email" placeholder="exemplo@email" v-model="email" required>
+              <input type="email" id="email" v-model="email" required>
             </li>
             <li>
-              <button type="submit">Enviar</button>
+              <label for="logo">Insira sua logo:</label>
+              <input type="file" id="logo" name="logo" accept="image/*">
             </li>
           </ul>
-        </div>
-        <div class="botao">
-          <button>+</button>
-          <p>Insira sua logo</p>
-        </div>
-         </div>
-      </form>
+          <div class="botao">
+            <button type="submit">Enviar</button>
+          </div>
+        </form>
+      </div>
     </section>
   </main>
 </template>
 
 <style scoped>
-main {
-  font-family: 'Inter', sans-serif;
-  background-color: #04394A;
-}
 .formas {
   display: flex;
   gap: 20px;
 }
+
 .quadrado {
   margin: 5vw auto 5vw auto;
   width: 1400px;
   height: 600px;
   background: #04394A;
   border: #f1f1f1 4px solid;
-  display: flex;
   justify-content: center;
-  align-items: self-start;
-}
-.detalhes {
-  text-align: center;
-  color: white;
-  padding: 2vw 0 0 0;
-}
-.detalhes img {
-  padding: 0 0 1.5vw 0;
-}
-.detalhes h1 {
-  padding: 1.5vw 0 0 0;
-  font-size: 1.3rem;
-  background-color: #08607C;
-  border-radius: 60px;
-  width: 35vw;
-  padding: 1vw 0 1vw 0 ;
-  display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
-footer {
+.detalhes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.detalhes img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.detalhes h1 {
+  font-size: 1.4rem;
+  background-color: #08607C;
+  border-radius: 20px;
+  padding: 0.6rem 1.5rem;
+  text-align: center;
+  width: fit-content;
+  color: white;
+}
+
+form {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 40px 80px;
-  color: #f1f1f1;
-  font-family: 'Inter', sans-serif;
-  gap: 40px;
-}
-footer img {
-  width: 120px;
-  height: auto;
-  margin-bottom: 10px;
-}
-.info {
-  display: flex;
-  flex-direction: column;
-  max-width: 220px;
-}
-.info p {
-  margin: 4px 0;
-}
-.info a {
-  text-decoration: none;
-  color: #f1f1f1;
-  font-weight: bold;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.aba-footer ul,
-.categoria-footer ul {
-  display: flex;
-  flex-direction: column;
+.lista, .lista2 {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-.socialmedia {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  font-size: 28px;
+  gap: 1.2rem;
+  flex: 1 1 45%;
+  min-width: 280px;
 }
 
-.socialmedia span {
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
+.lista li, .lista2 li {
+  color: white;
+  font-weight: bold;
+}
+input {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  padding: 5px 0;
+  font-size: 1rem;
 }
 
-.formulario {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  
- 
-}
-
-.botao {
-  width: 160px;
-  text-align: center;
-  color: #FFFFFF;
-  font-size: larger;
-}
-
-.esquerda{
-  margin: 0 5vw 0 20vw;
-  color: #FFFFFF;
-  font-size: 25px;
-}
-
-.direita{
-  margin: 0 5vw 0 0vw;
-  color: #FFFFFF;
-  font-size: 25px;
-}
-
-.lista{
-  list-style: none;
-}
-.lista2{
-  list-style: none;
+input:focus {
+  border-bottom: 2px solid #0abde3;
 }
 </style>
