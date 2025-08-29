@@ -14,7 +14,7 @@ import router from '@/router';
         <div class="abas">
           <ul>
             <li class="icons"><span class="fa-solid fa-house"></span></li>
-            <li class="sobre"><a href="#">Sobre</a></li>
+            <li class="sobre" @click="router.push('sobre-nos')">Sobre</li>
             <li class="icons"><span class="fa-solid fa-user"></span></li>
             <li class="icons"><span class="fa-solid fa-bookmark"></span></li>
             <li @click="router.push('/carrinho')" class="icons">

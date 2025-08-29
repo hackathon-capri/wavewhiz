@@ -6,10 +6,6 @@ import SobreNosComponent from '@/components/SobreNosComponent.vue'
 export const useAboutStore = defineStore('about', () => {
   const showAbout = ref(false)
 
-  function toggleAbout() {
-    showAbout.value = !showAbout.value
-  }
-
   function openAbout() {
     showAbout.value = true
   }
@@ -20,7 +16,6 @@ export const useAboutStore = defineStore('about', () => {
 
   return {
     showAbout,
-    toggleAbout,
     openAbout,
     closeAbout,
   }
