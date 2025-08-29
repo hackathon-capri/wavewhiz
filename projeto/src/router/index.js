@@ -23,6 +23,12 @@ const routes = [
         component: () => import('@/views/ProductView.vue'),
         props: true,
     },
+  {
+       path: 'carrinho/pagamento',
+       name: 'Pagamento',
+       component: () => import('@/views/PagamentoView.vue'),
+
+  }
 ]
 
 const router = createRouter({
