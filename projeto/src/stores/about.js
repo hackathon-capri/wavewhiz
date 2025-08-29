@@ -1,7 +1,6 @@
 
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import SobreNosComponent from '@/components/SobreNosComponent.vue'
 
 export const useAboutStore = defineStore('about', () => {
   const showAbout = ref(false)

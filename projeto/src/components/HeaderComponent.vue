@@ -14,12 +14,10 @@ import router from '@/router';
         <div class="abas">
           <ul>
             <li @click="router.push('/')" class="icons"><span class="fa-solid fa-house"></span></li>
-            <li class="sobre"><a href="#">Sobre</a></li>
+            <li @click="router.push('/sobre-nos')" class="sobre"><a href="#">Sobre</a></li>
             <li @click="router.push('/cadastro')" class="icons"><span class="fa-solid fa-user"></span></li>
             <li class="icons"><span class="fa-solid fa-bookmark"></span></li>
-            <li @click="router.push('/carrinho')" class="icons">
-              <span class="fa-solid fa-cart-shopping"></span>
-            </li>
+            <li @click="router.push('/carrinho')" class="icons"><span class="fa-solid fa-cart-shopping"></span></li>
             </ul>
         </div>
         <div class="categorias">

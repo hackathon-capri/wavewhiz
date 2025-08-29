@@ -14,7 +14,7 @@ import router from '@/router';
       <div class="aba-footer">
         <ul>
           <li @click="router.push('/')" style="cursor: pointer;">Inicio</li>
-          <li>Sobre</li>
+          <li @click="router.push('/sobre-nos')" style="cursor: pointer;">Sobre</li>
           <li @click="router.push('/cadastro')" style="cursor: pointer;">Cadastro</li>
           <li>Salvos</li>
           <li @click="router.push('/carrinho')" style="cursor: pointer;">Carrinho</li>
