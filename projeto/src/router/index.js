@@ -24,7 +24,7 @@ const routes = [
         props: true,
     },
   {
-       path: 'carrinho/pagamento',
+       path: '/carrinho/pagamento',
        name: 'Pagamento',
        component: () => import('@/views/PagamentoView.vue'),
 
