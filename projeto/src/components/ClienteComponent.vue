@@ -18,6 +18,11 @@ function handleSubmit() {
     complemento,
   })
 }
+
+  function cadastroEnviado() {
+    alert("Cadastro feito com sucesso!");
+  }
+
 </script>
 
 <template>
@@ -77,7 +82,7 @@ function handleSubmit() {
           </div>
 
           <div class="botoes">
-            <button type="submit">Enviar</button>
+            <button type="submit" @click="cadastroEnviado" value="enviar">Enviar</button>
             <button type="reset">Limpar</button>
           </div>
         </form>

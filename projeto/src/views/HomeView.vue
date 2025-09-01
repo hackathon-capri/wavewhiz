@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
 
 const modules = [Pagination]
-
 </script>
 
 <template>
@@ -12,9 +11,13 @@ const modules = [Pagination]
     <h1>Bem-Vindo!</h1>
     <hr />
     <p class="texto">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rutrum mauris.
-      Praesent ut sodales orci. Sed gravida enim a sem semper, ut ullamcorper purus venenatis.
-      Integer ac tortor consequat, imperdiet est vitae, semper sapien.
+      Este site foi criado com o objetivo de facilitar o acesso às vendas e aos serviços oferecidos
+      na comunidade do Capri, em São Francisco do Sul. Mais do que uma plataforma de compras, nosso
+      portal é um espaço dedicado ao fortalecimento do comércio local, à valorização dos moradores e
+      ao incentivo ao desenvolvimento da região. Capri é uma área rica em história, cultura e
+      belezas naturais, mas que, por diversos fatores, ainda enfrenta desafios relacionados ao
+      desenvolvimento e à visibilidade. Nosso site busca contribuir para mudar esse cenário,
+      conectando vendedores locais a clientes da própria comunidade e de fora dela.
     </p>
   </div>
   <div class="carrossel">
@@ -89,7 +92,7 @@ const modules = [Pagination]
 
 /* ===== Introdução ===== */
 div.introducao {
-  margin: 13vw 0 5vw 5vw;
+  margin: 8vw 0 5vw 5vw;
 }
 
 div.introducao h1,
@@ -104,13 +107,13 @@ p.seja {
 
 div.introducao h1 {
   margin: 0 2vw 0 0;
-  font-size: 4rem;
+  font-size: 5rem;
 }
 
 div.introducao p {
   margin: 0 65vw 0 0;
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 div.introducao p.seja {
@@ -120,6 +123,7 @@ div.introducao p.seja {
 div.introducao p.texto {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
+  font-size: 1.1rem;
 }
 
 hr {
@@ -129,5 +133,4 @@ hr {
   width: 28.5%;
   margin: 10px 0;
 }
-
 </style>
