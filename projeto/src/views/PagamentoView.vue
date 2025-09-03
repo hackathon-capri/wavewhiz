@@ -3,6 +3,8 @@
 
 <template>
   <main>
+    <div class="maior">
+    <div class="esquerda">
     <div class="cartoes">
       <div class="cartao-item">
         <input type="checkbox" id="caixa">
@@ -74,6 +76,36 @@
         </div>
       </div>
     </form>
+    </div>
+    <div class="direita">
+      <h3>Subtotal</h3>
+      <hr>
+      <div class="subtotal">
+        <p>2 itens</p>
+        <p>R$ 479,89</p>
+      </div>
+      <hr>
+      <h4>Tipo de pagamento</h4>
+      <ul>
+        <li class="1">
+          <input type="checkbox">
+          <img src="/public/Vector.png" alt="">
+          <p>Cartão de Crédito</p>
+        </li>
+        <li class="2">
+          <input type="checkbox">
+          <img src="/public/pix-removebg-preview 1.png" alt="">
+          <p>Pix</p>
+        </li>
+        <li class="3">
+          <input type="checkbox">
+          <img src="/public/Vector(1).png" alt="">
+          <p>Cartão de Débito</p>
+        </li>
+      </ul>
+      <button class="finalizar">Finalizar compra</button>
+    </div>
+    </div>
   </main>
 </template>
 
@@ -153,4 +185,19 @@ main {
   padding: 9px 5px;
   margin: 0 0.8vw 0 0;
 }
+.maior{
+  display: flex;
+}
+.direita{
+  background-color: #DBDCDC;
+
+}
+ul{
+  list-style: none;
+}
+.finalizar{
+  background-color: #04394A;
+  color: white ;
+}
+
 </style>
