@@ -1,120 +1,119 @@
 <script setup>
+import { ref } from 'vue'
+
+const bandeiras = [
+  { valor: 'caixa', img: '/caixa-removebg-preview 1.png' },
+  { valor: 'elo', img: '/Elo-removebg-preview 1.png' },
+  { valor: 'visa', img: '/Visa-removebg-preview 1.png' },
+  { valor: 'mastercard', img: '/Mastercard-removebg-preview 1.png' },
+]
+
+const bandeiraSelecionada = ref('')
 </script>
 
 <template>
   <main>
     <div class="maior">
-    <div class="esquerda">
-    <div class="cartoes">
-      <div class="cartao-item">
-        <input type="checkbox" id="caixa">
-        <label for="caixa">
-          <img src="/caixa-removebg-preview 1.png" alt="caixa-cartao">
-        </label>
-      </div>
+      <div class="esquerda">
+        <div class="cartoes">
+          <div
+            v-for="(bandeira, i) in bandeiras"
+            :key="i"
+            class="cartao-item"
+            :class="bandeiraSelecionada == bandeira.valor ? 'cartao-selecionado' : ''"
+            @click="bandeiraSelecionada = bandeira.valor"
+          >
+            <img :src="bandeira.img" :alt="bandeira.valor" />
+          </div>
+        </div>
 
-      <div class="cartao-item">
-        <input type="checkbox" id="elo">
-        <label for="elo" class="elo">
-          <img src="/Elo-removebg-preview 1.png" alt="elo-cartao">
-        </label>
-      </div>
+        <form @submit.prevent="handleSubmit">
+          <div class="dadosCartao">
+            <ul class="lista">
+              <li>
+                <label for="numero">Número do cartão:</label>
+                <input type="tel" id="numero" placeholder="0000 0000 0000 0000" maxlength="16" />
+              </li>
+              <li>
+                <label for="nome">Titular do cartão:</label>
+                <input type="text" id="nome" placeholder="Informe seu nome" />
+              </li>
+            </ul>
 
-      <div class="cartao-item">
-        <input type="checkbox" id="visa">
-        <label for="visa" class="visa">
-          <img src="/Visa-removebg-preview 1.png" alt="visa-cartao">
-        </label>
-      </div>
+            <div class="datacvc">
+              <div class="datavalidade">
+                <label for="mes">Selecione o mês:</label>
+                <select id="mes" name="mes">
+                  <option value="01">Mês</option>
+                  <option value="02">Janeiro</option>
+                  <option value="03">Fevereiro</option>
+                  <option value="04">Março</option>
+                  <option value="05">Abril</option>
+                  <option value="06">Maio</option>
+                  <option value="07">Junho</option>
+                  <option value="08">Julho</option>
+                  <option value="09">Agosto</option>
+                  <option value="10">Setembro</option>
+                  <option value="11">Outubro</option>
+                  <option value="12">Novembro</option>
+                  <option value="13">Dezembro</option>
+                </select>
+                <input type="tel" id="dataDevalidade" placeholder="Ano" />
+              </div>
 
-      <div class="cartao-item">
-        <input type="checkbox" id="mastercard">
-        <label for="mastercard">
-          <img src="/Mastercard-removebg-preview 1.png" alt="mastercard-cartao">
-        </label>
+              <div class="cvc">
+                <label for="cvc">CVC:</label>
+                <input type="tel" id="cvc" placeholder="000" />
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
-    </div>
+      <div class="direita">
+        <h3>Subtotal</h3>
+        <hr />
+        <div class="subtotal">
+          <p>2 itens</p>
+          <p>R$ 479,89</p>
+          <!-- provisório -->
+        </div>
+        <hr />
+        <h4>Tipo de pagamento</h4>
 
-    <form @submit.prevent="handleSubmit">
-      <div class="dadosCartao">
-        <ul class="lista">
+        <ul class="tipo-pagamento">
           <li>
-            <label for="numero">Número do cartão:</label>
-            <input type="tel" id="numero" placeholder="0000 0000 0000 0000" maxlength="16">
+            <input type="radio" name="tipo-pagamento" id="valor1" value="credito" />
+            <label for="valor1">
+              <img src="/public/Vector.png" alt="Cartão de Crédito" />
+              Cartão de Crédito
+            </label>
           </li>
           <li>
-            <label for="nome">Titular do cartão:</label>
-            <input type="text" id="nome" placeholder="Informe seu nome">
+            <input type="radio" name="tipo-pagamento" id="valor2" value="pix" />
+            <label for="valor2">
+              <img src="/public/pix-removebg-preview 1.png" alt="Pix" />
+              Pix
+            </label>
+          </li>
+          <li>
+            <input type="radio" name="tipo-pagamento" id="valor3" value="debito" />
+            <label for="valor3">
+              <img src="/public/Vector(1).png" alt="Cartão de Débito" />
+              Cartão de Débito
+            </label>
           </li>
         </ul>
 
-        <div class="datacvc">
-          <div class="datavalidade">
-            <label for="mes">Selecione o mês:</label>
-            <select id="mes" name="mes">
-              <option value="01">Mês</option>
-              <option value="02">Janeiro</option>
-              <option value="03">Fevereiro</option>
-              <option value="04">Março</option>
-              <option value="05">Abril</option>
-              <option value="06">Maio</option>
-              <option value="07">Junho</option>
-              <option value="08">Julho</option>
-              <option value="09">Agosto</option>
-              <option value="10">Setembro</option>
-              <option value="11">Outubro</option>
-              <option value="12">Novembro</option>
-              <option value="13">Dezembro</option>
-            </select>
-            <input type="tel" id="dataDevalidade" placeholder="Ano" />
-          </div>
-
-          <div class="cvc">
-            <label for="cvc">CVC:</label>
-            <input type="tel" id="cvc" placeholder="000">
-          </div>
-        </div>
+        <button class="finalizar">Finalizar compra</button>
       </div>
-    </form>
-    </div>
-    <div class="direita">
-      <h3>Subtotal</h3>
-      <hr>
-      <div class="subtotal">
-        <p>2 itens</p>
-        <p>R$ 479,89</p>
-      </div>
-      <hr>
-      <h4>Tipo de pagamento</h4>
-      <ul>
-        <li class="1">
-          <input type="checkbox">
-          <img src="/public/Vector.png" alt="">
-          <p>Cartão de Crédito</p>
-        </li>
-        <li class="2">
-          <input type="checkbox">
-          <img src="/public/pix-removebg-preview 1.png" alt="">
-          <p>Pix</p>
-        </li>
-        <li class="3">
-          <input type="checkbox">
-          <img src="/public/Vector(1).png" alt="">
-          <p>Cartão de Débito</p>
-        </li>
-      </ul>
-      <button class="finalizar">Finalizar compra</button>
-    </div>
     </div>
   </main>
 </template>
 
 <style scoped>
 main {
-  background-color: #F5F5F5;
-  padding: 5%;
+  background-color: #f5f5f5;
 }
-
 .cartoes {
   margin: 0 0 3vw 8vw;
   display: flex;
@@ -126,17 +125,10 @@ main {
   align-items: center;
   flex-direction: row;
   gap: 0.6rem;
-}
 
-.cartao-item input[type="checkbox"] {
-  transform: scale(1.5);
-  cursor: pointer;
-}
-
-.cartoes label {
   background: #c7c3c3;
-  width: 100px;
-  height: 60px;
+  width: 180px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,8 +137,13 @@ main {
   cursor: pointer;
 }
 
-.cartoes label:hover {
-  transform: scale(1.2);
+.cartao-selecionado {
+  transform: scale(1.1);
+  border: 1.8px solid #04394a;
+}
+
+.cartao-item:hover {
+  transform: scale(1.1);
 }
 
 .cartoes img {
@@ -170,7 +167,7 @@ main {
   margin: 0 15px 0 0;
   font-size: 1.3rem;
   font-weight: bold;
-  color: #04394A;
+  color: #04394a;
 }
 
 .datacvc {
@@ -185,19 +182,90 @@ main {
   padding: 9px 5px;
   margin: 0 0.8vw 0 0;
 }
-.maior{
+
+.maior {
   display: flex;
-}
-.direita{
-  background-color: #DBDCDC;
-
-}
-ul{
-  list-style: none;
-}
-.finalizar{
-  background-color: #04394A;
-  color: white ;
+  gap: 2rem;
 }
 
+.direita {
+  background-color: #dbdcdc;
+  padding: 7%;
+  margin: 0;
+}
+
+.direita h3 {
+  color: #04394a;
+  margin: 0 10vw 1vw 0;
+  font-size: 1.8rem;
+}
+
+.direita hr {
+  color: #04394a;
+  margin: 1.4vw 0 1.4vw 0;
+}
+
+.direita h4 {
+  font-size: 1.5rem;
+  color: #04394a;
+}
+
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #04394a;
+}
+
+.esquerda {
+  margin: 10vw 0 10vw 0;
+}
+.tipo-pagamento {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+}
+
+.tipo-pagamento li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tipo-pagamento input[type='radio'] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.tipo-pagamento label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #04394a;
+  font-weight: 500;
+}
+
+.tipo-pagamento img {
+  background: white;
+  padding: 4px;
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.finalizar {
+  background-color: #04394a;
+  color: white;
+  padding: 10px 45px;
+  flex: center;
+  font-size: 1.1rem;
+  border: none;
+  margin: 2rem auto 0 auto;
+  margin-top: 2rem;
+  cursor: pointer;
+  display: block;
+}
 </style>
