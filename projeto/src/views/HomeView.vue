@@ -36,7 +36,7 @@ onMounted(async () => {
     </p>
   </div>
   <div class="clientes">
-    <h2>Lista de Clientes</h2>
+    <!-- <h2>Lista de Clientes</h2>
     <ul>
       <li v-for="cliente in clientes" :key="cliente.id || cliente.pk">
         <p><strong>Nome:</strong> {{ cliente.nome }}</p>
@@ -44,7 +44,7 @@ onMounted(async () => {
         <p><strong>Email:</strong> {{ cliente.email }}</p>
         <hr />
       </li>
-    </ul>
+    </ul> -->
   </div>
 
   <div class="carrossel">
@@ -94,6 +94,13 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+
+/* main, html {
+  background-image: url("../../public/teste.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+} */
 /* ===== Carrossel ===== */
 .swiper {
   width: 95%;
@@ -104,13 +111,14 @@ onMounted(async () => {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #08607c;
+  background: #4e8b9e;
   opacity: 0.6;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 2vw;
 }
+
 
 .swiper-slide img {
   display: block;

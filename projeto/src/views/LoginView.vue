@@ -1,5 +1,6 @@
 <script>
 import router from '@/router';
+import axios from 'axios';
 </script>
 <template>
   <main>
@@ -12,16 +13,16 @@ import router from '@/router';
 
         <form @submit.prevent="handleSubmit">
           <div class="formulario">
-            <ul class="lista">
-              <li>
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" v-model="form.nome" required />
-              </li>
-              <li>
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" v-model="form.senha" maxlength="100" required />
-              </li>
-            </ul>
+          <ul class="lista">
+            <li>
+              <label for="email">Email:</label>
+              <input type="email" id="email" v-model="form.email" required />
+            </li>
+            <li>
+              <label for="senha">Senha:</label>
+              <input type="password" id="senha" v-model="form.senha" maxlength="100" required />
+            </li>
+          </ul>
           </div>
 
           <div class="botoes">
@@ -29,8 +30,9 @@ import router from '@/router';
             <button type="button" @click="resetForm">Limpar</button>
           </div>
         </form>
-        <button @click="router.push('/cadastro')" class="cadastro">Ainda não é cadastrado? Clique aqui!</button>
-      </div>
+        <router-link to="/cadastro" class="cadastro">
+      Ainda não é cadastrado? Clique aqui!
+        </router-link>      </div>
     </section>
   </main>
 </template>
@@ -39,18 +41,35 @@ import router from '@/router';
 import { reactive } from "vue";
 
 const form = reactive({
-  nome: "",
+  email: "",
   senha: "",
 });
 
 function resetForm() {
-  form.nome = "";
+  form.email = "";
   form.senha = "";
 }
 
-function handleSubmit() {
-  // Aqui você pode adicionar lógica de login
-  console.log("Formulário enviado:", { ...form });
+async function handleSubmit() {
+  try {
+    const response = await axios.post("http://127.0.0.1:8000/api/token/", {
+      email: form.email,
+      password: form.senha,
+    });
+
+    // Tokens JWT retornados
+    const { access, refresh } = response.data;
+
+    // Armazena no localStorage
+    localStorage.setItem("access", access);
+    localStorage.setItem("refresh", refresh);
+
+    // Redireciona (ex: para página principal)
+    router.push("/dashboard");
+  } catch (error) {
+    console.error("Erro no login:", error.response?.data || error.message);
+    alert("Credenciais inválidas. Tente novamente.");
+  }
 }
 </script>
 
@@ -59,8 +78,8 @@ function handleSubmit() {
   margin: 5vw auto;
   width: 600px;
   min-height: 400px;
-  background: #04394a;
-  border: #f1f1f1 4px solid;
+  background: #04384a5d;
+  /* border: #f1f1f13b 4px solid; */
   padding: 2rem;
   box-sizing: border-box;
   border-radius: 10px;
@@ -156,7 +175,7 @@ input:focus {
   margin: 1.5rem auto;
   color: #f1f1f1;
   border: none;
-  background-color: #04394a;
+  /* background-color: #04394a; */
   text-align: center;
   cursor: pointer;
   font-size: 1rem;
