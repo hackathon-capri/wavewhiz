@@ -75,9 +75,9 @@ function handleSubmit() {
             </ul>
 
             <div class="lado-direito">
-              <label for="logo" class="upload-logo">+</label>
-              <p>Insira sua logo:</p>
-              <input type="file" id="logo" name="logo" accept="image/*" style="display: none" />
+              <label for="foto" class="upload-foto">+</label>
+              <p>Insira sua foto:</p>
+              <input type="file" id="foto" name="foto" accept="image/*" style="display: none" />
             </div>
           </div>
 
@@ -202,7 +202,7 @@ input:focus {
   font-size: 1rem;
 }
 
-.upload-logo {
+.upload-foto {
   display: flex;
   align-items: center;
   justify-content: center;

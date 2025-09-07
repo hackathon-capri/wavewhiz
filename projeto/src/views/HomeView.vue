@@ -1,11 +1,23 @@
 <script setup>
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
 
 const modules = [Pagination]
+const clientes = ref([])
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/clientes/')
+    clientes.value = response.data
+  } catch (error) {
+    console.error('Erro ao buscar clientes:', error)
+  }
+})
 </script>
 
 <template>
+  <p>Pagina de Login</p>
   <div class="introducao">
     <p class="seja">Seja</p>
     <h1>Bem-Vindo!</h1>
@@ -19,7 +31,19 @@ const modules = [Pagination]
       desenvolvimento e à visibilidade. Nosso site busca contribuir para mudar esse cenário,
       conectando vendedores locais a clientes da própria comunidade e de fora dela.
     </p>
+    <div>
+    <h2>Lista de Clientes</h2>
+    <ul>
+      <li v-for="cliente in clientes" :key="cliente.id">
+        <p><strong>Nome:</strong> {{ cliente.nome }}</p>
+        <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
+        <p><strong>Email:</strong> {{ cliente.email }}</p>
+        <hr />
+      </li>
+    </ul>
   </div>
+  </div>
+
   <div class="carrossel">
     <swiper
       :slidesPerView="2"
