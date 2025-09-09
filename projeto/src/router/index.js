@@ -27,8 +27,8 @@ const routes = [
         path: '/sobre-nos',
         name: 'Sobre',
         component: () => import('@/views/SobreNosView.vue'),
-    }
-  {
+    },
+    {
        path: '/carrinho/pagamento',
        name: 'Pagamento',
        component: () => import('@/views/PagamentoView.vue'),
