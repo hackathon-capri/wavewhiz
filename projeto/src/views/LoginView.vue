@@ -175,7 +175,6 @@ input:focus {
   margin: 1.5rem auto;
   color: #f1f1f1;
   border: none;
-  /* background-color: #04394a; */
   text-align: center;
   cursor: pointer;
   font-size: 1rem;

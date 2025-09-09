@@ -10,7 +10,6 @@ import 'swiper/css/pagination'
 const app = createApp(App)
 const pinia = createPinia()
 
-// Troca background do body conforme rota
 router.afterEach((to) => {
   if (to.path === '/') {
     document.body.style.backgroundImage = "url('/teste.jpg')"

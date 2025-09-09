@@ -49,7 +49,6 @@ function resetForm() {
 }
 
 function handleSubmit() {
-  // Aqui você pode adicionar lógica de login
   console.log("Formulário enviado:", { ...form });
 }
 </script>
