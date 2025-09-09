@@ -95,12 +95,6 @@ onMounted(async () => {
 
 <style scoped>
 
-/* main, html {
-  background-image: url("../../public/teste.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-} */
 /* ===== Carrossel ===== */
 .swiper {
   width: 95%;
