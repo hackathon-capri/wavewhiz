@@ -6,10 +6,9 @@
       <h1>Sobre Nós</h1>
      <div class="maior">
       <div class="esquerda">
-        <img src="/Rectangle 274.png" alt="">
+        <img src="/public/foto-grupo.png" alt="">
       </div>
       <div class="direita">
-        <h2>Quem somos e nosso objetivo:</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque <br> porttitor tristique tortor non dignissim.
           Vestibulum ante ipsum primis  in <br> faucibus orci luctus et ultrices posuere cubilia curae; Donec  vulputate <br>ultricies nulla ut aliquet.
@@ -22,15 +21,9 @@
   </main>
 </template>
 <style scoped>
-main{
-  border: 2px solid white;
-  width: 80%;
-  margin: 5vw 0 5vw 10vw;
-}
 h1{
   margin: 4vw 18vw 2vw 20vw;
   text-align: center;
-  border: 2px solid white;
   padding: 5px 4px 5px 4px;
   display: inline-block;
   width: 50%;

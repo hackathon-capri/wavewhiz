@@ -1,11 +1,14 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
 
 const modules = [Pagination]
 const clientes = ref([])
+const router = useRouter()
+
 onMounted(async () => {
   try {
     const response = await axios.get('http://127.0.0.1:8000/clientes/')
@@ -17,8 +20,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <p>Pagina de Login</p>
-  <div class="introducao">
+  <main>
+    <div class="introducao">
     <p class="seja">Seja</p>
     <h1>Bem-Vindo!</h1>
     <hr />
@@ -31,17 +34,17 @@ onMounted(async () => {
       desenvolvimento e à visibilidade. Nosso site busca contribuir para mudar esse cenário,
       conectando vendedores locais a clientes da própria comunidade e de fora dela.
     </p>
-    <div>
-    <h2>Lista de Clientes</h2>
+  </div>
+  <div class="clientes">
+    <!-- <h2>Lista de Clientes</h2>
     <ul>
-      <li v-for="cliente in clientes" :key="cliente.id">
+      <li v-for="cliente in clientes" :key="cliente.id || cliente.pk">
         <p><strong>Nome:</strong> {{ cliente.nome }}</p>
         <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
         <p><strong>Email:</strong> {{ cliente.email }}</p>
         <hr />
       </li>
-    </ul>
-  </div>
+    </ul> -->
   </div>
 
   <div class="carrossel">
@@ -87,9 +90,17 @@ onMounted(async () => {
       </swiper-slide>
     </swiper>
   </div>
+  </main>
 </template>
 
 <style scoped>
+
+/* main, html {
+  background-image: url("../../public/teste.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+} */
 /* ===== Carrossel ===== */
 .swiper {
   width: 95%;
@@ -100,12 +111,14 @@ onMounted(async () => {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #08607c;
+  background: #4e8b9e;
   opacity: 0.6;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 2vw;
 }
+
 
 .swiper-slide img {
   display: block;
@@ -156,5 +169,21 @@ hr {
   background-color: #f1f1f1;
   width: 28.5%;
   margin: 10px 0;
+}
+
+/* ===== Lista de Clientes ===== */
+div.clientes {
+  margin: 5vw 0 5vw 5vw;
+  color: #f1f1f1;
+}
+
+div.clientes h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+div.clientes ul {
+  list-style: none;
+  padding: 0;
 }
 </style>

@@ -36,7 +36,8 @@ main {
   margin: 5vw auto 5vw auto;
   width: 1300px;
   height: 600px;
-  background-color: #08607C;
+  background-color: #08617c4f;
+  image:;
 }
 .detalhes {
   text-align: center;
