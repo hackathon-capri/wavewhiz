@@ -28,6 +28,12 @@ const routes = [
         name: 'Sobre',
         component: () => import('@/views/SobreNosView.vue'),
     }
+  {
+       path: '/carrinho/pagamento',
+       name: 'Pagamento',
+       component: () => import('@/views/PagamentoView.vue'),
+
+  }
 ]
 
 const router = createRouter({

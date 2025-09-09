@@ -1,4 +1,5 @@
 <script setup>
+import router from '@/router'
 import { ref } from 'vue'
 
 const cart = ref({
@@ -74,7 +75,7 @@ function incrementProductToCart(product) {
             <span>Produtos</span> <span>R$ {{ cart.total.toFixed(2) }}</span>
           </div>
           <hr class="linha-cart" />
-          <button @click="goToPayment">Ir para o pagamento</button>
+          <button @click="router.push('/carrinho/pagamento')">Ir para o pagamento</button>
         </div>
       </div>
     </div>
