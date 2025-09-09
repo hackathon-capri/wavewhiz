@@ -77,6 +77,7 @@ footer img {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-weight: bold;
 }
 
 .socialmedia {

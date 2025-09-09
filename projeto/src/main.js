@@ -12,7 +12,7 @@ const pinia = createPinia()
 
 router.afterEach((to) => {
   if (to.path === '/') {
-    document.body.style.backgroundImage = "url('/teste.jpg')"
+    document.body.style.backgroundImage = "url('/teste1.png')"
     document.body.style.backgroundRepeat = "no-repeat"
     document.body.style.backgroundSize = "cover"
     document.body.style.backgroundPosition = "center"

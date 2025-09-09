@@ -123,7 +123,7 @@ onMounted(async () => {
 
 /* ===== Introdução ===== */
 div.introducao {
-  margin: 8vw 0 5vw 5vw;
+  margin: 8vw 0 5vw 2vw;
 }
 
 div.introducao h1,
