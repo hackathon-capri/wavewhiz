@@ -22,21 +22,18 @@ onMounted(async () => {
 <template>
   <main>
     <div class="introducao">
-    <p class="seja">Seja</p>
-    <h1>Bem-Vindo!</h1>
-    <hr />
-    <p class="texto">
-      Este site foi criado com o objetivo de facilitar o acesso às vendas e aos serviços oferecidos
-      na comunidade do Capri, em São Francisco do Sul. Mais do que uma plataforma de compras, nosso
-      portal é um espaço dedicado ao fortalecimento do comércio local, à valorização dos moradores e
-      ao incentivo ao desenvolvimento da região. Capri é uma área rica em história, cultura e
-      belezas naturais, mas que, por diversos fatores, ainda enfrenta desafios relacionados ao
-      desenvolvimento e à visibilidade. Nosso site busca contribuir para mudar esse cenário,
-      conectando vendedores locais a clientes da própria comunidade e de fora dela.
-    </p>
-  </div>
-  <div class="clientes">
-    <!-- <h2>Lista de Clientes</h2>
+      <p class="seja">Seja</p>
+      <h1>Bem-Vindo!</h1>
+      <hr />
+      <p class="texto">
+        Nosso site conecta vendedores e clientes do Capri, em São Francisco do Sul, fortalecendo o comércio local,
+        valorizando moradores e promovendo o desenvolvimento. Mais que uma plataforma de compras, é um espaço que une
+        história, cultura e belezas naturais, dando visibilidade à região e incentivando oportunidades para toda a
+        comunidade.
+      </p>
+    </div>
+    <div class="clientes">
+      <!-- <h2>Lista de Clientes</h2>
     <ul>
       <li v-for="cliente in clientes" :key="cliente.id || cliente.pk">
         <p><strong>Nome:</strong> {{ cliente.nome }}</p>
@@ -45,56 +42,49 @@ onMounted(async () => {
         <hr />
       </li>
     </ul> -->
-  </div>
+    </div>
 
-  <div class="carrossel">
-    <swiper
-      :slidesPerView="2"
-      :spaceBetween="90"
-      :centeredSlides="true"
-      :pagination="{ clickable: true }"
-      :modules="modules"
-      class="mySwiper"
-    >
-      <swiper-slide>
-        <div class="card1">
-          <h1>teste</h1>
-          <p>teste</p>
-          <p>teste</p>
-          <p>teste</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="card2">
-          <h1>teste2</h1>
-          <p>teste2</p>
-          <p>teste2</p>
-          <p>teste2</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="card3">
-          <h1>teste3</h1>
-          <p>teste2</p>
-          <p>teste2</p>
-          <p>teste2</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="card4">
-          <h1>teste4</h1>
-          <p>teste2</p>
-          <p>teste2</p>
-          <p>teste2</p>
-        </div>
-      </swiper-slide>
-    </swiper>
-  </div>
+    <div class="carrossel">
+      <swiper :slidesPerView="2" :spaceBetween="90" :centeredSlides="true" :pagination="{ clickable: true }"
+        :modules="modules" class="mySwiper">
+        <swiper-slide>
+          <div class="card1">
+            <h1>teste</h1>
+            <p>teste</p>
+            <p>teste</p>
+            <p>teste</p>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="card2">
+            <h1>teste2</h1>
+            <p>teste2</p>
+            <p>teste2</p>
+            <p>teste2</p>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="card3">
+            <h1>teste3</h1>
+            <p>teste2</p>
+            <p>teste2</p>
+            <p>teste2</p>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="card4">
+            <h1>teste4</h1>
+            <p>teste2</p>
+            <p>teste2</p>
+            <p>teste2</p>
+          </div>
+        </swiper-slide>
+      </swiper>
+    </div>
   </main>
 </template>
 
 <style scoped>
-
 /* ===== Carrossel ===== */
 .swiper {
   width: 95%;
