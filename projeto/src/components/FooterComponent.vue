@@ -11,6 +11,7 @@ import router from '@/router';
         <p>Ana Paula, Anna Flávia, Emilly, Kelly, Pietra.</p>
         <p><a href="tel:+5547999205622">+55 (47) 9 9920-5622</a></p>
       </div>
+      <div class="listas-responsivo">
       <div class="aba-footer">
         <ul>
           <li @click="router.push('/')" style="cursor: pointer;">Inicio</li>
@@ -28,6 +29,7 @@ import router from '@/router';
           <li>Alimentação</li>
           <li>Outros</li>
         </ul>
+      </div>
       </div>
       <div class="socialmedia">
         <span class="fa-brands fa-square-instagram"></span>
@@ -69,6 +71,20 @@ footer img {
   color: #f1f1f1;
   font-weight: bold;
 }
+.listas-responsivo {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+}
+
+.listas-responsivo ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 8px;
+}
 
 .aba-footer ul,
 .categoria-footer ul {
@@ -91,6 +107,30 @@ footer img {
   transition:
     transform 0.2s ease,
     color 0.2s ease;
+}
+
+/*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .listas-responsivo ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .socialmedia {
+    flex-direction: row;
+    justify-content: center;
+    font-size: 22px;
+  }
 }
 
 </style>

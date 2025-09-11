@@ -74,6 +74,7 @@ async function handleSubmit() {
 </script>
 
 <style scoped>
+
 .quadrado {
   margin: 5vw auto;
   width: 600px;
@@ -100,7 +101,7 @@ async function handleSubmit() {
 
 .detalhes h1 {
   font-size: 1.6rem;
-  background-color: #08607c;
+  background-color:#04394A;
   border-radius: 20px;
   padding: 0.6rem 1.5rem;
   text-align: center;
@@ -156,7 +157,7 @@ input:focus {
 }
 
 .botoes button {
-  background-color: #08607c;
+  background-color: #04394A;
   color: white;
   border: none;
   padding: 10px 30px;
@@ -167,7 +168,7 @@ input:focus {
 }
 
 .botoes button:hover {
-  background-color: #0abde3;
+  background-color: #08607C;
   transition: 0.3s;
 }
   .cadastro {
@@ -181,5 +182,59 @@ input:focus {
   font-size: 1rem;
 }
 
+/*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 768px) {
+  .quadrado {
+    width: 90%;
+    max-width: 600px;
+    padding: 1.5rem;
+    margin-top: 20vw;
+  }
+
+  .detalhes img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .detalhes h1 {
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .formulario {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lista {
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .lista li {
+    flex-direction: column;
+  }
+
+  input {
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .botoes {
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .botoes button {
+    width: 100%;
+  }
+
+  .cadastro {
+    font-size: 0.95rem;
+    margin: 1rem auto;
+  }
+}
 
 </style>
