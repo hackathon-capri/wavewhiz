@@ -32,21 +32,20 @@ onMounted(async () => {
         comunidade.
       </p>
     </div>
+
     <div class="clientes">
-      <!-- <h2>Lista de Clientes</h2>
-    <ul>
-      <li v-for="cliente in clientes" :key="cliente.id || cliente.pk">
-        <p><strong>Nome:</strong> {{ cliente.nome }}</p>
-        <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
-        <p><strong>Email:</strong> {{ cliente.email }}</p>
-        <hr />
-      </li>
-    </ul> -->
+      <!-- Conteúdo comentado -->
     </div>
 
     <div class="carrossel">
-      <swiper :slidesPerView="2" :spaceBetween="90" :centeredSlides="true" :pagination="{ clickable: true }"
-        :modules="modules" class="mySwiper">
+      <swiper
+        :slidesPerView="2"
+        :spaceBetween="90"
+        :centeredSlides="true"
+        :pagination="{ clickable: true }"
+        :modules="modules"
+        class="mySwiper"
+      >
         <swiper-slide>
           <div class="card1">
             <h1>teste</h1>
@@ -88,7 +87,6 @@ onMounted(async () => {
 /* ===== Carrossel ===== */
 .swiper {
   width: 95%;
-  height: 100%;
   border-radius: 2vw;
 }
 
@@ -102,7 +100,6 @@ onMounted(async () => {
   align-items: center;
   border-radius: 2vw;
 }
-
 
 .swiper-slide img {
   display: block;
@@ -169,5 +166,47 @@ div.clientes h2 {
 div.clientes ul {
   list-style: none;
   padding: 0;
+}
+
+/* ===== Responsivo para até 768px ===== */
+@media (max-width: 768px) {
+  .swiper-slide {
+    font-size: 15px;
+    padding: 15px;
+    margin: 3vw 0 0 0;
+  }
+
+  div.introducao {
+    margin: 10vw 10vw;
+  }
+
+  div.introducao h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-right: 0;
+  }
+
+  div.introducao p.seja {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  div.introducao p {
+    font-size: 0.95rem;
+    max-width: 95%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  div.introducao p.texto {
+    font-size: 0.95rem;
+    margin-top: 1rem;
+  }
+
+  hr {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 </style>

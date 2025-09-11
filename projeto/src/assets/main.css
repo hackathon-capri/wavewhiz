@@ -4,8 +4,22 @@
   font-family: 'Inter', sans-serif;
 }
 
-body, html {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background-color: #184655;
+  overflow-x: hidden;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; 
 }
 
 header{
