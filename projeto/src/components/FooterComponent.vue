@@ -17,7 +17,6 @@ import router from '@/router';
           <li @click="router.push('/')" style="cursor: pointer;">Inicio</li>
           <li @click="router.push('/sobre-nos')" style="cursor: pointer;">Sobre</li>
           <li @click="router.push('/login')" style="cursor: pointer;">Login</li>
-          <li>Salvos</li>
           <li @click="router.push('/carrinho')" style="cursor: pointer;">Carrinho</li>
          </ul>
          </div>
@@ -27,7 +26,6 @@ import router from '@/router';
           <li>Artesanato</li>
           <li>Roupas</li>
           <li>Alimentação</li>
-          <li>Outros</li>
         </ul>
       </div>
       </div>

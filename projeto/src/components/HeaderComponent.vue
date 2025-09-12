@@ -28,7 +28,6 @@ const toggleMenu = () => {
           <li @click="router.push('/login')" class="icons">
             <span class="fa-solid fa-user"></span>
           </li>
-          <li class="icons"><span class="fa-solid fa-bookmark"></span></li>
           <li @click="router.push('/carrinho')" class="icons">
             <span class="fa-solid fa-cart-shopping"></span>
           </li>
@@ -50,7 +49,17 @@ nav {
 
 ul {
   display: flex;
-  margin: 0 1vw 0 18vw;
+  margin: 0 2vw 0 18vw;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sobre {
+  margin: 8px 0 0 0;
+  font-weight: bold;
+  flex-grow: 1;
+  text-align: center;
 }
 
 ul li {
@@ -78,6 +87,7 @@ ul li.sobre a {
   text-align: left;
   color: white;
   font-size: 1.5rem;
+  margin: 0 0 0 1vw;
 }
 
 .pesquisa {
@@ -105,10 +115,8 @@ ul li.sobre a {
   padding: 5px;
   outline: none;
 }
-.sobre {
-  margin: 11px 0 0 0;
-  font-weight: bold;
-}
+
+
 
 /*---------->RESPONSIVIDADE<----------*/
 .hamburguer {

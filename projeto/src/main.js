@@ -26,7 +26,11 @@ router.afterEach((to) => {
     document.body.style.backgroundRepeat = "no-repeat"
     document.body.style.backgroundSize = "cover"
     document.body.style.backgroundPosition = "center"
-  }else {
+  } else if (to.path === '/sobre-nos') {
+    document.body.style.backgroundImage = "linear-gradient(to bottom, #0a6b85, #002c38), url('/alot-shark.jpg')";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition = "center";
+  } else {
     document.body.style.backgroundImage = ""
   }
 })
