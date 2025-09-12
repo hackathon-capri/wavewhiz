@@ -170,14 +170,13 @@ async function handleSubmit() {
 </main>
 </template>
 
-
 <style scoped>
 .quadrado {
   margin: 5vw auto;
-  width: 1400px;
+  width: 1300px;
   min-height: 600px;
-  background: #04384a50;
-  border: #f1f1f149 4px solid;
+  background: #04384aa6;
+  border-radius: 20px;
   padding: 2rem;
   box-sizing: border-box;
 }
@@ -190,14 +189,13 @@ async function handleSubmit() {
 }
 
 .detalhes img {
-  width: 60px;
   height: 60px;
   margin-bottom: 1rem;
 }
 
 .detalhes h1 {
   font-size: 1.4rem;
-  background-color: #08607c;
+  background-color: #04394A;
   border-radius: 20px;
   padding: 0.6rem 1.5rem;
   text-align: center;
@@ -272,14 +270,19 @@ input:focus {
 }
 
 .botoes button {
-  background-color: #08607c;
+  background-color: #04394A;
   color: white;
   border: none;
-  padding: 10px 30px;
+  padding: 15px 35px;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
+}
+
+.botoes button:hover {
+  background-color: #08607C;
+  transition: 0.3s;
 }
 
 .upload-foto {
@@ -297,4 +300,40 @@ input:focus {
   text-align: center;
   font-size: 2rem;
 }
+
+/*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 768px) {
+  .quadrado {
+    width: 90vw;
+    height: 100%;
+    padding: 1rem;
+  }
+
+  .formulario {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .lista, .lista2, .lado-direito {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .botoes {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .botoes button {
+    width: 100%;
+  }
+
+  .upload-logo {
+    width: 0%;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
+
 </style>

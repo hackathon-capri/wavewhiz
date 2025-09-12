@@ -78,23 +78,22 @@ async function handleSubmit() {
 
 .quadrado {
   margin: 5vw auto;
-  width: 600px;
-  min-height: 400px;
-  background: #04384a5d;
+  width: 700px;
+  height: 600px;
+  background: #04384aa6;
   padding: 2rem;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .detalhes {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  margin: 20px 0 20px 0;
 }
 
 .detalhes img {
-  width: 60px;
   height: 60px;
   margin-bottom: 1rem;
 }
@@ -120,11 +119,12 @@ form {
 .lista {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 27px 0 0 0;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
+  font-size: 1.3rem;
 }
 
 .lista li {
@@ -160,11 +160,11 @@ input:focus {
   background-color: #04394A;
   color: white;
   border: none;
-  padding: 10px 30px;
+  padding: 20px 60px;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .botoes button:hover {

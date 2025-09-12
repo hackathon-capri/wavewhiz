@@ -58,7 +58,7 @@ function handleSubmit() {
   margin: 5vw auto;
   width: 600px;
   min-height: 400px;
-  background: #04394a;
+  background: #04384a5d;
   border: #f1f1f1 4px solid;
   padding: 2rem;
   box-sizing: border-box;
