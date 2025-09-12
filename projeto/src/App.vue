@@ -98,9 +98,6 @@ const showLogin = ref(false);
       <RouterView />
     </main>
     <footer-component />
-
-
-
   <div class="container"></div>
   <section v-if="!showLogin">
     <main v-if="showPayment">
@@ -128,10 +125,6 @@ const showLogin = ref(false);
 
 <style scoped>
 
-
-
-
-/* ===== Payment ===== */
 .payment {
   background: white;
 }

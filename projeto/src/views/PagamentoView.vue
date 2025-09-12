@@ -268,4 +268,17 @@ main {
   cursor: pointer;
   display: block;
 }
+/*---------->RESPONSIVIDADE<----------*/
+ @media (max-width:768px){
+  .maior {
+    display: block;
+  }
+  .cartoes{
+    display: block;
+    
+  }
+
+
+
+ }
 </style>
