@@ -269,16 +269,15 @@ main {
   display: block;
 }
 /*---------->RESPONSIVIDADE<----------*/
- @media (max-width:768px){
-  .maior {
+@media(max-width: 768px){
+.maior {
     display: block;
-  }
-  .cartoes{
-    display: block;
-    
-  }
-
-
-
- }
+    margin: 0 0 4vw 0;
+}
+.cartoes{
+  display: block;
+  display: flex;
+  gap: 2vw;
+}
+}
 </style>
