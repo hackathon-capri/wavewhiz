@@ -26,7 +26,6 @@ const bandeiraSelecionada = ref('')
             <img :src="bandeira.img" :alt="bandeira.valor" />
           </div>
         </div>
-
         <form @submit.prevent="handleSubmit">
           <div class="dadosCartao">
             <ul class="lista">
@@ -60,7 +59,6 @@ const bandeiraSelecionada = ref('')
                 </select>
                 <input type="tel" id="dataDevalidade" placeholder="Ano" />
               </div>
-
               <div class="cvc">
                 <label for="cvc">CVC:</label>
                 <input type="tel" id="cvc" placeholder="000" />
@@ -79,15 +77,7 @@ const bandeiraSelecionada = ref('')
         </div>
         <hr />
         <h4>Tipo de pagamento</h4>
-
         <ul class="tipo-pagamento">
-          <li>
-            <input type="radio" name="tipo-pagamento" id="valor1" value="credito" />
-            <label for="valor1">
-              <img src="/public/Vector.png" alt="Cartão de Crédito" />
-              Cartão de Crédito
-            </label>
-          </li>
           <li>
             <input type="radio" name="tipo-pagamento" id="valor2" value="pix" />
             <label for="valor2">
@@ -103,7 +93,6 @@ const bandeiraSelecionada = ref('')
             </label>
           </li>
         </ul>
-
         <button class="finalizar">Finalizar compra</button>
       </div>
     </div>
@@ -269,15 +258,40 @@ main {
   display: block;
 }
 /*---------->RESPONSIVIDADE<----------*/
-@media(max-width: 768px){
-.maior {
+@media (max-width: 768px) {
+  .maior {
     display: block;
     margin: 0 0 4vw 0;
-}
-.cartoes{
-  display: block;
-  display: flex;
-  gap: 2vw;
-}
+  }
+  .cartoes {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .cartao-item {
+    width: 30%;
+    height: 75px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    background-color: #c7c3c3;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .cartao-selecionado {
+    transform: scale(1.05);
+    border: 2px solid #04394a;
+  }
+
+  .cartao-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  .dadosCartao{
+  margin: 2vw 2vw 2vw 2vw;
+  }
 }
 </style>
