@@ -42,6 +42,11 @@ const routes = [
     path: '/perfil-empreendedor',
     name: 'PerfilEmpreendedor',
     component: () => import('@/views/PerfilEmpreendedorView.vue'),
+  },
+  {
+    path: '/perfil-cliente',
+    name: 'PerfilCliente',
+    component: () => import('@/views/PerfilClienteView.vue'),
   }
 ]
 

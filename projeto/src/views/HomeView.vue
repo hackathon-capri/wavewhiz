@@ -34,6 +34,7 @@ onMounted(async () => {
     </div>
 
     <div class="clientes">
+      <p @click="router.push('/perfil-cliente')" >Perfil Cliente</p>
       <p @click="router.push('/perfil-empreendedor')" >Perfil Empreendedor</p>
       <!-- Conteúdo comentado -->
     </div>
