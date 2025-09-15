@@ -15,9 +15,8 @@ onMounted(() => {
   <main>
     <section class="perfil">
       <h1>Perfil do Cliente</h1>
-
       <div v-if="cliente">
-        <p><strong>Nome:</strong> {{ cliente.nome }}</p>
+        <p><strong>Nome:</strong> {{cliente.nome}}</p>
         <p><strong>Email:</strong> {{ cliente.email }}</p>
         <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
         <p><strong>Telefone:</strong> {{ cliente.telefone }}</p>
