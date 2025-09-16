@@ -1,22 +1,21 @@
 <script setup>
 // import { ref } from 'vue'
 </script>
+
 <template>
   <div class="template">
     <div class="esquerda">
-  <img src="/Rectangle 439.png" alt="" />
+      <img src="/foto-desenvolvedoras.jpeg" alt="Equipe WaveWhiz" />
     </div>
     <div class="direita">
       <h1>Sobre Nós</h1>
       <hr />
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor tristique
-        tortor non dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-        posuere cubilia curae; Donec vulputate ultricies nulla ut aliquet. Pellentesque varius
-        semper libero, non pharetra turpis pellentesque nec. Nam sed elit a ipsum semper mollis vel
-        at libero. Mauris at erat non odio tempor commodo vitae a sapien. Quisque sollicitudin,
-        felis ut, maximus dignissim, mauris justo pulvinar metus, id fringilla velit nunc quis
-        ipsum. Maecenas dolor lectus,.
+        Somos alunas do Instituto Federal Catarinense (IFC) e criamos este site como parte de um
+        projeto que une aprendizado, criatividade e trabalho em equipe. Mais do que apenas cumprir
+        uma tarefa, nosso objetivo foi aplicar o que aprendemos e mostrar nossas habilidades. Todo o
+        conteúdo e o visual foram pensados e desenvolvidos por nós, refletindo nosso
+        comprometimento, dedicação e o resultado de um trabalho colaborativo.
       </p>
     </div>
   </div>
@@ -24,33 +23,48 @@
 <style scoped>
 div.template {
   display: flex;
-  margin: 10vw 10vw 10vw 10vw;
+  margin: 10vw;
+  align-items: flex-start;
 }
 
 div.esquerda {
   margin: 0 5vw 0 0;
+  flex: 1;
 }
+
 div.esquerda img {
+  max-width: 100%;
   width: 35vw;
-  height: 50vh;
+  height: auto;
+  border-radius: 12px;
 }
+
+div.direita {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 div.direita h1 {
   color: white;
   font-size: 3rem;
   padding-bottom: 12px;
-  margin-top: 2vw;
+  margin: 0;
 }
+
 div.direita hr {
   border: 2px solid white;
   width: 13vw;
   margin-bottom: 20px;
 }
+
 div.direita p {
   color: white;
-  margin: 3vw 0 0 0;
-  width: 110%;
   font-size: 20px;
   font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /*---------->RESPONSIVIDADE<----------*/
@@ -67,13 +81,17 @@ div.direita p {
 
   div.esquerda img {
     width: 80vw;
-    height: 25vh;
+    height: auto;
     margin-top: 5vw;
+  }
+
+  div.direita {
+    display: block;
+    text-align: center;
   }
 
   div.direita h1 {
     font-size: 2rem;
-    text-align: center;
   }
 
   div.direita hr {
@@ -88,5 +106,4 @@ div.direita p {
     margin: 0;
   }
 }
-
 </style>
