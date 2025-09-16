@@ -11,18 +11,15 @@
       <h1>Sobre Nós</h1>
       <hr />
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor tristique
-        tortor non dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-        posuere cubilia curae; Donec vulputate ultricies nulla ut aliquet. Pellentesque varius
-        semper libero, non pharetra turpis pellentesque nec. Nam sed elit a ipsum semper mollis vel
-        at libero. Mauris at erat non odio tempor commodo vitae a sapien. Quisque sollicitudin,
-        felis ut, maximus dignissim, mauris justo pulvinar metus, id fringilla velit nunc quis
-        ipsum. Maecenas dolor lectus,.
+        Somos alunas do Instituto Federal Catarinense (IFC) e criamos este site como parte de um
+        projeto que une aprendizado, criatividade e trabalho em equipe. Mais do que apenas cumprir
+        uma tarefa, nosso objetivo foi aplicar o que aprendemos e mostrar nossas habilidades. Todo o
+        conteúdo e o visual foram pensados e desenvolvidos por nós, refletindo nosso
+        comprometimento, dedicação e o resultado de um trabalho colaborativo.
       </p>
     </div>
   </div>
 </template>
-
 <style scoped>
 div.template {
   display: flex;
