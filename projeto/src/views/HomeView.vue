@@ -30,35 +30,23 @@ const modules = [Pagination]
         class="mySwiper"
       >
         <swiper-slide>
-          <div class="card1">
-            <h1>teste</h1>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
+          <div class="card1" @click="router.push('/pagina-alimentos')">
+            <h1>Alimentos</h1>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="card2">
-            <h1>teste2</h1>
-            <p>teste2</p>
-            <p>teste2</p>
-            <p>teste2</p>
+            <h1>Artesanatos</h1>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="card3">
-            <h1>teste3</h1>
-            <p>teste2</p>
-            <p>teste2</p>
-            <p>teste2</p>
+            <h1>Roupas</h1>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="card4">
-            <h1>teste4</h1>
-            <p>teste2</p>
-            <p>teste2</p>
-            <p>teste2</p>
+            <h1>Outros</h1>
           </div>
         </swiper-slide>
       </swiper>
@@ -161,7 +149,12 @@ div.clientes ul {
   list-style: none;
   padding: 0;
 }
-
+.carrossel h1 {
+  font-size: 2.5rem;
+  margin: 3.2vw 0 0 0;
+  text-align: center;
+  color: #f1f1f1;
+}
 /* ===== Responsivo para até 768px ===== */
 @media (max-width: 768px) {
   .swiper-slide {

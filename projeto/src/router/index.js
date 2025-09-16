@@ -48,6 +48,11 @@ const routes = [
     name: 'PerfilCliente',
     component: () => import('@/views/PerfilClienteView.vue'),
   },
+  {
+    path: '/pagina-alimentos',
+    name: 'PaginaAlimentos',
+    component: () => import('@/views/PaginaAlimentosView.vue'),
+  }
 ]
 
 const router = createRouter({
