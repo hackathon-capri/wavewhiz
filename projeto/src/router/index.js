@@ -48,6 +48,11 @@ const routes = [
     name: 'PerfilCliente',
     component: () => import('@/views/PerfilClienteView.vue'),
   },
+  {
+    path: '/carrinho/pagamento/compra-finalizada',
+    name: 'CompraFinalizada',
+    component: () => import('@/views/CompraFinalizadaView.vue'),
+  }
 ]
 
 const router = createRouter({
