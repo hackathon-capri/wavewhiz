@@ -1,7 +1,5 @@
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
-
 const modules = [Pagination]
 
 
@@ -20,11 +18,6 @@ const modules = [Pagination]
       </p>
     </div>
 
-    <div class="clientes">
-      <p @click="router.push('/perfil-cliente')" >Perfil Cliente</p>
-      <p @click="router.push('/perfil-empreendedor')" >Perfil Empreendedor</p>
-      <!-- Conteúdo comentado -->
-    </div>
 
     <div class="carrossel">
       <swiper
