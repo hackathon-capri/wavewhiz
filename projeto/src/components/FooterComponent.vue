@@ -5,7 +5,7 @@ import router from '@/router';
 
 <template>
   <footer>
-      <img src="/public/logo-footer.png" alt="" />
+  <img src="/logo-footer.png" alt="" />
       <div class="info">
         <p>Desenvolvimento:</p>
         <p>Ana Paula, Anna Flávia, Emilly, Kelly, Pietra.</p>

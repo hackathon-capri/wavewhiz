@@ -30,7 +30,7 @@ const logout = () => {
 <template>
   <div class="quadrado">
     <div class="detalhes">
-  <img src="/login-icon.png" alt="Ícone de login" />
+      <img src="/login-icon.png" alt="Ícone de login" />
       <h1>Seu Perfil</h1>
     </div>
     <div class="listas">
@@ -39,31 +39,11 @@ const logout = () => {
           <li>
             <p>Nome: {{ perfil.nome }}</p>
           </li>
-          <li>
-            <p>Email: {{ perfil.email }}</p>
-          </li>
-          <li>
-            <p>CPF: {{ perfil.cpf }}</p>
-          </li>
-          <li>
-            <p>Telefone: {{ perfil.telefone }}</p>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li>
-            <p>Data de Nascimento: {{ perfil.data_nascimento }}</p>
-          </li>
-          <li>
-            <p>Role: {{ perfil.role }}</p>
-          </li>
         </ul>
       </div>
     </div>
     <div class="botoes">
       <button>Editar Dados</button>
-      <button>Adicionar itens</button>
       <button @click="logout">Logout</button>
     </div>
   </div>

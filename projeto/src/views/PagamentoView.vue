@@ -84,21 +84,21 @@ const bandeiraSelecionada = ref('')
           <li>
             <input type="radio" name="tipo-pagamento" id="valor1" value="credito" />
             <label for="valor1">
-              <img src="/public/Vector.png" alt="Cartão de Crédito" />
+              <img src="/Vector.png" alt="Cartão de Crédito" />
               Cartão de Crédito
             </label>
           </li>
           <li>
             <input type="radio" name="tipo-pagamento" id="valor2" value="pix" />
             <label for="valor2">
-              <img src="/public/pix-removebg-preview 1.png" alt="Pix" />
+              <img src="/pix-removebg-preview 1.png" alt="Pix" />
               Pix
             </label>
           </li>
           <li>
             <input type="radio" name="tipo-pagamento" id="valor3" value="debito" />
             <label for="valor3">
-              <img src="/public/Vector(1).png" alt="Cartão de Débito" />
+              <img src="/Vector(1).png" alt="Cartão de Débito" />
               Cartão de Débito
             </label>
           </li>

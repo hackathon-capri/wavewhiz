@@ -23,7 +23,7 @@ const routes = [
     component: () => import('@/views/PagamentoView.vue')
   },
   {
-    path: '/livro/:id',
+    path: '/produto/:id',
     name: 'Produto',
     component: () => import('@/views/ProductView.vue'),
     props: true,
@@ -42,7 +42,12 @@ const routes = [
     path: '/perfil-empreendedor',
     name: 'PerfilEmpreendedor',
     component: () => import('@/views/PerfilEmpreendedorView.vue'),
-  }
+  },
+  {
+    path: '/perfil-cliente',
+    name: 'PerfilCliente',
+    component: () => import('@/views/PerfilClienteView.vue'),
+  },
 ]
 
 const router = createRouter({

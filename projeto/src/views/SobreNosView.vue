@@ -4,7 +4,7 @@
 <template>
   <div class="template">
     <div class="esquerda">
-      <img src="/public/Rectangle 439.png" alt="" />
+  <img src="/Rectangle 439.png" alt="" />
     </div>
     <div class="direita">
       <h1>Sobre Nós</h1>
