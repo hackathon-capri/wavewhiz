@@ -19,6 +19,8 @@ const modules = [Pagination]
       </p>
     </div>
 
+     <router-link to="/add-produto" class="add-produto">Página adicionar produto</router-link>
+
 
     <div class="carrossel">
       <swiper

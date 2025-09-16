@@ -48,6 +48,11 @@ const routes = [
     name: 'PerfilCliente',
     component: () => import('@/views/PerfilClienteView.vue'),
   },
+    {
+    path: '/add-produto',
+    name: 'AdicionarProduto',
+    component: () => import('@/views/AddProdutoView.vue'),
+  }
 ]
 
 const router = createRouter({
