@@ -34,6 +34,12 @@ router.afterEach((to) => {
   } else if (to.path === '/perfil-empreendedor') {
     document.body.style.backgroundColor = '#04394a'
     document.body.style.backgroundImage = ''
+  } else if (to.path === '/pagina-alimentos') {
+    document.body.style.backgroundImage =
+      'linear-gradient(to bottom, #04394A 0%, #04394A 40%, #F5F5F5 40%, #F5F5F5 100%)'
+    document.body.style.backgroundRepeat = 'no-repeat'
+    document.body.style.backgroundSize = 'cover'
+    document.body.style.backgroundPosition = 'center'
   } else {
     document.body.style.backgroundImage = ''
   }
