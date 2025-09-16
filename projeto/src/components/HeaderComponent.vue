@@ -6,6 +6,22 @@ const menuAberto = ref(false)
 const toggleMenu = () => {
   menuAberto.value = !menuAberto.value
 }
+
+const handleLoginClick = () => {
+  const token = localStorage.getItem('access_token')
+  if (token) {
+    const user = JSON.parse(localStorage.getItem('user') || '{}')
+    if (user.role === 'cliente') {
+      router.push('/perfil-cliente')
+    } else if (user.role === 'empreendedor') {
+      router.push('/perfil-empreendedor')
+    }  else {
+      router.push('/login')
+    }
+  } else {
+    router.push('/login')
+  }
+}
 </script>
 
 <template>
@@ -18,14 +34,14 @@ const toggleMenu = () => {
         <span class="fa-solid fa-magnifying-glass"></span>
         <input type="text" />
       </div>
-      <div class="hamburguer" @click="toggleMenu">
+      <div class="menu-hamburguer" @click="toggleMenu">
         <span class="fa-solid fa-bars"></span>
       </div>
       <div class="abas" :class="{ ativo: menuAberto }">
         <ul>
           <li @click="router.push('/')" class="icons"><span class="fa-solid fa-house"></span></li>
           <li @click="router.push('/sobre-nos')" class="sobre"><a href="#">Sobre</a></li>
-          <li @click="router.push('/login')" class="icons">
+          <li @click="handleLoginClick" class="icons">
             <span class="fa-solid fa-user"></span>
           </li>
           <li @click="router.push('/carrinho')" class="icons">
@@ -119,7 +135,7 @@ ul li.sobre a {
 
 
 /*---------->RESPONSIVIDADE<----------*/
-.hamburguer {
+.menu-hamburguer {
   display: none;
   font-size: 1.8rem;
   cursor: pointer;
@@ -182,7 +198,7 @@ ul li.sobre a {
     transform: translateY(0);
   }
 
-  .hamburguer {
+  .menu-hamburguer {
     display: block;
   }
 }

@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "axios": "^1.12.2",
+    "jwt-decode": "^4.0.0",
     "node": "^20.19.5",
     "pinia": "^3.0.3",
     "swiper": "^11.2.10",

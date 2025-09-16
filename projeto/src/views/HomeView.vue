@@ -1,24 +1,11 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import axios from 'axios'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
 
 const modules = [Pagination]
-const clientes = ref([])
-const router = useRouter()
 
-onMounted(async () => {
-  try {
-    const response = await axios.get('http://127.0.0.1:8000/clientes/')
-    clientes.value = response.data
-  } catch (error) {
-    console.error('Erro ao buscar clientes:', error)
-  }
-})
+
 </script>
-
 <template>
   <main>
     <div class="introducao">
@@ -144,6 +131,17 @@ div.introducao p.texto {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 1.1rem;
+}
+
+.token-display {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #f1f1f1;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  word-break: break-all;
 }
 
 hr {

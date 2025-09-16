@@ -108,16 +108,16 @@ const showLogin = ref(false);
         <section class="bandeiras">
           <div class="opcoes">
             <input type="radio" id="op1" value="op1" v-model="selected" name="bolinhas" />
-            <label for="op1"><img src="/public/caixa-removebg-preview 1.png" alt="" /></label>
+            <label for="op1"><img src="/caixa-removebg-preview 1.png" alt="" /></label>
 
             <input type="radio" id="op2" value="op2" v-model="selected" name="bolinhas" />
-            <label for="op2"><img src="/public/Elo-removebg-preview 1.png" alt="" /></label>
+            <label for="op2"><img src="/Elo-removebg-preview 1.png" alt="" /></label>
 
             <input type="radio" id="op3" value="op3" v-model="selected" name="bolinhas" />
-            <label for="op3"><img src="/public/Visa-removebg-preview 1.png" alt="" /></label>
+            <label for="op3"><img src="/Visa-removebg-preview 1.png" alt="" /></label>
 
             <input type="radio" id="op4" value="op4" v-model="selected" name="bolinhas" />
-            <label for="op4"><img src="/public/Mastercard-removebg-preview 1.png" alt="" /></label>
+            <label for="op4"><img src="/Mastercard-removebg-preview 1.png" alt="" /></label>
           </div>
         </section>
       </section>

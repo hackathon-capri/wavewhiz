@@ -1,56 +1,66 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import api from '@/api'
+import router from '@/router'
 
 const perfil = ref({})
 
 onMounted(async () => {
-  const res = await fetch('http://127.0.0.1:8000/api/perfil/1/')
-  perfil.value = await res.json()
+  try {
+    const user = JSON.parse(localStorage.getItem('user') || '{}')
+    if (user.id) {
+      const res = await api.get(`/usuarios/${user.id}/`)
+      perfil.value = res.data
+    } else {
+      console.error('Usuário não encontrado no localStorage')
+    }
+  } catch (err) {
+    console.error('Erro ao buscar perfil:', err)
+  }
 })
+
+const logout = () => {
+  localStorage.removeItem('access_token')
+  localStorage.removeItem('refresh_token')
+  localStorage.removeItem('user')
+  router.push('/')
+}
 </script>
 
 <template>
   <div class="quadrado">
     <div class="detalhes">
-      <img src="/public/login-icon.png" alt="Ícone de login" />
+      <img src="/login-icon.png" alt="Ícone de login" />
       <h1>Seu Perfil</h1>
     </div>
     <div class="listas">
       <div>
         <ul>
           <li>
-            <p>Nome:</p>
+            <p>Nome: {{ perfil.nome }}</p>
           </li>
           <li>
-            <p>Data de Nascimento:</p>
+            <p>Data de Nascimento: {{ perfil.data_nascimento }}</p>
           </li>
           <li>
-            <p>E-Mail:</p>
-          </li>
-          <li>
-            <p>CPF:</p>
+            <p>E-Mail: {{ perfil.email }}</p>
           </li>
         </ul>
       </div>
       <div>
         <ul>
-          <li>
-            <p>Estado/Cidade</p>
+           <li>
+            <p>CPF: {{ perfil.cpf }}</p>
           </li>
-          <li>
-            <p>Rua/Número:</p>
-          </li>
-          <li>
-            <p>Complemento:</p>
-          </li>
-          <li>
-            <p>CEP:</p>
+           <li>
+            <p>Telefone: {{ perfil.telefone }}</p>
           </li>
         </ul>
       </div>
     </div>
     <div class="botoes">
       <button>Editar Dados</button>
+      <button @click="logout">Logout</button>
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@
             <div class="quadrado">
               <div class="detalhes">
                 <div class="login">
-                  <img src="/public/login-icon.png" alt="">
+                  <img src="/login-icon.png" alt="">
                   <h1>Como você quer se cadastrar?</h1>
                 </div>
                 <ul>
