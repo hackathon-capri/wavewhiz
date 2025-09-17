@@ -219,25 +219,38 @@ function resetForm() {
 
 /*---------->RESPONSIVIDADE<----------*/
 @media (max-width: 768px) {
-    .quadrado {
+  .quadrado {
     width: 95%;
     padding: 15px;
     min-height: auto;
   }
+
   .detalhes h1 {
     font-size: 1.2rem;
     padding: 8px 20px;
     margin-left: 15px;
   }
 
-.listas {
+  .conteudo {
     flex-direction: column;
-    margin-top: 3rem;
-    font-size: 1rem;
+    align-items: center;
+  }
+
+  .listas {
+    width: 100%;
+    font-size: 0.8rem;
+    margin-top: 2rem;
   }
 
   .listas ul {
-    margin: 0 0 2rem 0;
+    margin: 0 0 1rem 0;
+  }
+  .listas ul li {
+    font-size: 0.5rem;
+  }
+
+  .foto-container {
+    margin-top: 2rem;
   }
 
   .botoes {
