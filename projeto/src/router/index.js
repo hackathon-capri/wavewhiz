@@ -52,7 +52,11 @@ const routes = [
     path: '/pagina-alimentos',
     name: 'PaginaAlimentos',
     component: () => import('@/views/PaginaAlimentosView.vue'),
-  }
+  },
+    { path: '/carrinho/pagamento/compra-finalizada',
+    name: 'CompraFinalizada',
+    component: () => import('@/views/CompraFinalizadaView.vue'),
+  },
 ]
 
 const router = createRouter({
