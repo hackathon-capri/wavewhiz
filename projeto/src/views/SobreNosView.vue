@@ -68,6 +68,30 @@ div.direita p {
 }
 
 /*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 1366px) {
+  div.template {
+    margin: 6vw 8vw;
+    gap: 3vw;
+  }
+
+  div.esquerda img {
+    width: 60vw;
+    height: 45vh;
+  }
+
+  div.direita h1 {
+    font-size: 2.5rem;
+  }
+
+  div.direita hr {
+    width: 10vw;
+  }
+
+  div.direita p {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 768px) {
   div.template {
     flex-direction: column;
