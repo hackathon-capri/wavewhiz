@@ -155,8 +155,58 @@ div.clientes ul {
   text-align: center;
   color: #f1f1f1;
 }
-/* ===== Responsivo para até 768px ===== */
-@media (max-width: 768px) {
+/*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 1366px) { /*Notebooks*/
+  .swiper {
+    width: 100%;
+    padding: 0;
+  }
+
+  .swiper-slide {
+    font-size: 16px;
+    padding: 10px;
+    margin: 2vw 0;
+  }
+
+  .carrossel h1 {
+    font-size: 2rem;
+    margin-bottom: 3vw;
+  }
+
+  div.introducao {
+    margin: 5vw 5vw;
+  }
+
+  div.introducao h1 {
+    font-size: 3.5rem;
+    text-align: left;
+    margin-right: 0;
+  }
+
+  div.introducao p.seja {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  div.introducao p {
+    font-size: 1rem;
+    max-width: 90%;
+    margin: 0 0 1rem 0;
+    text-align: left;
+  }
+
+  div.introducao p.texto {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  hr {
+    width: 35%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) { /*Celulares*/
   .swiper-slide {
     font-size: 15px;
     padding: 15px;

@@ -142,6 +142,30 @@ ul li.sobre a {
   color: white;
   margin: 0 20px 0 0;
 }
+@media (max-width: 1366px) { /*Notebooks*/
+  .logo h1 {
+    font-size: 1.4rem;
+  }
+
+  .pesquisa {
+    margin: 0 10vw 0 10vw;
+  }
+  .pesquisa span {
+    margin-left: 15px;
+  }
+  .pesquisa input {
+    width: 250px;
+  }
+
+  ul {
+    margin: 0 1vw 0 10vw;
+    gap: 8px;
+  }
+
+  li.icons {
+    font-size: 1.3rem;
+  }
+}
 @media (max-width: 768px) {
   .logo h1 {
     font-size: 1.2rem;
