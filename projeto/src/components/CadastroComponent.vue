@@ -130,6 +130,36 @@ footer img {
 }
 
 /*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 1366px) {
+  .quadrado {
+    width: 85%;
+    height: auto;
+    padding: 5vw 2vw 5vw 2vw;
+  }
+  .detalhes {
+    padding: 2vw;
+  }
+  .detalhes h1 {
+    font-size: 1.6rem;
+    padding: 10px 25px;
+  }
+
+  .button {
+    width: 25vw;
+    font-size: 1.3rem;
+    padding: 3.5vw 0;
+  }
+
+  .detalhes ul li {
+    padding: 0 3vw;
+  }
+
+
+  .socialmedia {
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 768px) {
   .quadrado {
     width: 90%;

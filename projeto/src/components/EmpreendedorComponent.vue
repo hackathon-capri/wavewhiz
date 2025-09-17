@@ -262,6 +262,38 @@ select option {
 }
 
 /*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 1366px) {
+  .quadrado {
+    width: 90%;
+    height: auto;
+    padding: 5vw 2vw;
+  }
+
+  .detalhes h1 {
+    font-size: 1.3rem;
+    padding: 0.5rem 1.2rem;
+  }
+
+  .formulario {
+    gap: 1.5rem;
+  }
+
+  .lista,
+  .lista2 {
+    gap: 1rem;
+  }
+
+  input,
+  select {
+    font-size: 0.95rem;
+  }
+
+  .botoes button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .quadrado {
     width: 90vw;

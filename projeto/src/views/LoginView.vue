@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import router from '@/router'
 import api from '@/api'
-import { jwtDecode } from 'jwt-decode' 
+import { jwtDecode } from 'jwt-decode'
 
 const email = ref('')
 const password = ref('')
@@ -18,7 +18,7 @@ async function handleSubmit() {
   error.value = ''
   try {
     const payload = { email: email.value, password: password.value }
-    const response = await api.post('/api/token/', payload) 
+    const response = await api.post('/api/token/', payload)
 
     const { access, refresh } = response.data
 
@@ -204,6 +204,35 @@ input:focus {
 .error { color: #f66; margin-top: 8px; }
 
 /*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 1366px) {
+  .quadrado {
+    width: 600px;
+    height: auto;
+    padding: 2rem;
+    margin: 6vw auto;
+  }
+
+  .detalhes h1 {
+    font-size: 1.5rem;
+    padding: 0.5rem 1.2rem;
+  }
+
+  .lista {
+    font-size: 1.1rem;
+    gap: 1.2rem;
+  }
+
+  .botoes button {
+    font-size: 1.1rem;
+    padding: 16px 50px;
+  }
+
+  .cadastro {
+    font-size: 0.95rem;
+    margin-top: 1.2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .quadrado {
     width: 90%;
