@@ -7,7 +7,7 @@
             <div class="quadrado">
               <div class="detalhes">
                 <div class="login">
-                  <img src="/public/login-icon.png" alt="">
+                  <img src="/login-icon.png" alt="">
                   <h1>Como você quer se cadastrar?</h1>
                 </div>
                 <ul>
@@ -36,8 +36,8 @@ main {
   margin: 5vw auto 5vw auto;
   width: 1300px;
   height: 600px;
-  background-color: #08617c4f;
-  image:;
+  background-color: #04384aa6;
+  border-radius: 20px;
 }
 .detalhes {
   text-align: center;
@@ -45,8 +45,13 @@ main {
   padding: 5vw 0 0 0;
 }
 .detalhes h1 {
-  padding: 1.5vw 0 0 0;
+  padding: 10px 30px 10px 30px;
+  border-radius: 20px;
+  width: fit-content;
+  margin: 20px auto;
+  background-color: #04394A;
 }
+
 .detalhes ul {
   padding: 3vw 0 0 0;
   display: flex;
@@ -65,14 +70,14 @@ main {
   border-radius: 40px;
   font-weight: bold;
   width: 20vw;
-  padding: 4vw 0 4vw 0;
+  padding: 4vw 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .button:hover {
   background-color: white;
   color: #08607C;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 footer {
@@ -122,5 +127,75 @@ footer img {
 .socialmedia span {
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 768px) {
+  .quadrado {
+    width: 90%;
+    max-width: 600px;
+    height: 400px;
+    border-radius: 20px;
+    margin-top: 20vw;
+  }
+
+  .detalhes img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .detalhes h1 {
+  font-size: 1.4rem;
+  padding: 10px 30px;
+  border-radius: 20px;
+  width: fit-content;
+  margin: 20px auto;
+  background-color: #04394A;
+}
+
+  .detalhes ul {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 15px 0 0 0;
+  }
+
+  .detalhes ul li {
+    padding: 0;
+  }
+
+  .button {
+    width: 60vw;
+    font-size: 1.2rem;
+    border-radius: 20px;
+  }
+
+  .button:hover {
+  background-color: white;
+  color: #08607C;
+  cursor: pointer;
+}
+
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .info,
+  .aba-footer ul,
+  .categoria-footer ul,
+  .socialmedia {
+    align-items: center;
+    max-width: none;
+  }
+
+  .socialmedia {
+    flex-direction: row;
+    gap: 20px;
+    font-size: 24px;
+  }
 }
 </style>

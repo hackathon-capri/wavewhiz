@@ -6,6 +6,22 @@ const menuAberto = ref(false)
 const toggleMenu = () => {
   menuAberto.value = !menuAberto.value
 }
+
+const handleLoginClick = () => {
+  const token = localStorage.getItem('access_token')
+  if (token) {
+    const user = JSON.parse(localStorage.getItem('user') || '{}')
+    if (user.role === 'cliente') {
+      router.push('/perfil-cliente')
+    } else if (user.role === 'empreendedor') {
+      router.push('/perfil-empreendedor')
+    }  else {
+      router.push('/login')
+    }
+  } else {
+    router.push('/login')
+  }
+}
 </script>
 
 <template>
@@ -18,17 +34,16 @@ const toggleMenu = () => {
         <span class="fa-solid fa-magnifying-glass"></span>
         <input type="text" />
       </div>
-      <div class="hamburguer" @click="toggleMenu">
+      <div class="menu-hamburguer" @click="toggleMenu">
         <span class="fa-solid fa-bars"></span>
       </div>
       <div class="abas" :class="{ ativo: menuAberto }">
         <ul>
           <li @click="router.push('/')" class="icons"><span class="fa-solid fa-house"></span></li>
           <li @click="router.push('/sobre-nos')" class="sobre"><a href="#">Sobre</a></li>
-          <li @click="router.push('/login')" class="icons">
+          <li @click="handleLoginClick" class="icons">
             <span class="fa-solid fa-user"></span>
           </li>
-          <li class="icons"><span class="fa-solid fa-bookmark"></span></li>
           <li @click="router.push('/carrinho')" class="icons">
             <span class="fa-solid fa-cart-shopping"></span>
           </li>
@@ -50,7 +65,17 @@ nav {
 
 ul {
   display: flex;
-  margin: 0 1vw 0 18vw;
+  margin: 0 2vw 0 18vw;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sobre {
+  margin: 8px 0 0 0;
+  font-weight: bold;
+  flex-grow: 1;
+  text-align: center;
 }
 
 ul li {
@@ -78,6 +103,7 @@ ul li.sobre a {
   text-align: left;
   color: white;
   font-size: 1.5rem;
+  margin: 0 0 0 1vw;
 }
 
 .pesquisa {
@@ -105,13 +131,11 @@ ul li.sobre a {
   padding: 5px;
   outline: none;
 }
-.sobre {
-  margin: 11px 0 0 0;
-  font-weight: bold;
-}
+
+
 
 /*---------->RESPONSIVIDADE<----------*/
-.hamburguer {
+.menu-hamburguer {
   display: none;
   font-size: 1.8rem;
   cursor: pointer;
@@ -174,7 +198,7 @@ ul li.sobre a {
     transform: translateY(0);
   }
 
-  .hamburguer {
+  .menu-hamburguer {
     display: block;
   }
 }

@@ -1,7 +1,58 @@
-<script>
+<script setup>
+import { ref } from 'vue'
 import router from '@/router'
-import axios from 'axios'
+import api from '@/api'
+import { jwtDecode } from 'jwt-decode' 
+
+const email = ref('')
+const password = ref('')
+const error = ref('')
+
+function resetForm() {
+  email.value = ''
+  password.value = ''
+  error.value = ''
+}
+
+async function handleSubmit() {
+  error.value = ''
+  try {
+    const payload = { email: email.value, password: password.value }
+    const response = await api.post('/api/token/', payload) 
+
+    const { access, refresh } = response.data
+
+    // Salva tokens
+    localStorage.setItem('access_token', access)
+    localStorage.setItem('refresh_token', refresh)
+
+    // Define header para requisições futuras
+    api.defaults.headers.common.Authorization = `Bearer ${access}`
+
+    // Decodifica o token para obter user_id (conforme settings.py do backend)
+    const decoded = jwtDecode(access)
+    const userId = decoded.user_id
+
+    // Busca dados do usuário específico
+    const userResponse = await api.get(`/usuarios/${userId}/`)
+    const user = userResponse.data // Agora é um objeto único
+    localStorage.setItem('user', JSON.stringify(user))
+
+    // Redireciona baseado no role
+    if (user.role === 'cliente') {
+      router.push('/perfil-cliente')
+    } else if (user.role === 'empreendedor') {
+      router.push('/perfil-empreendedor')
+    } else {
+      router.push('/') // Para admin ou outros
+    }
+  } catch (err) {
+    error.value = err.response?.data?.detail || err.response?.data || 'Credenciais inválidas. Tente novamente.'
+    console.error('Erro no login:', err.response?.data || err.message)
+  }
+}
 </script>
+
 <template>
   <main>
     <section>
@@ -16,11 +67,11 @@ import axios from 'axios'
             <ul class="lista">
               <li>
                 <label for="email">Email:</label>
-                <input type="email" id="email" v-model="form.email" required />
+                <input type="email" id="email" v-model="email" required />
               </li>
               <li>
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" v-model="form.senha" maxlength="100" required />
+                <label for="password">Senha:</label>
+                <input type="password" id="password" v-model="password" maxlength="100" required />
               </li>
             </ul>
           </div>
@@ -29,7 +80,12 @@ import axios from 'axios'
             <button type="submit">Entrar</button>
             <button type="button" @click="resetForm">Limpar</button>
           </div>
+
+          <div v-if="error" class="error" style="color:#f66; text-align:center; margin-top:12px;">
+            {{ error }}
+          </div>
         </form>
+
         <router-link to="/cadastro" class="cadastro">
           Ainda não é cadastrado? Clique aqui!
         </router-link>
@@ -38,63 +94,26 @@ import axios from 'axios'
   </main>
 </template>
 
-<script setup>
-import { reactive } from 'vue'
-
-const form = reactive({
-  email: '',
-  senha: '',
-})
-
-function resetForm() {
-  form.email = ''
-  form.senha = ''
-}
-
-async function handleSubmit() {
-  try {
-    const response = await axios.post('http://127.0.0.1:8000/api/token/', {
-      email: form.email,
-      password: form.senha,
-    })
-
-    // Tokens JWT retornados
-    const { access, refresh } = response.data
-
-    // Armazena no localStorage
-    localStorage.setItem('access', access)
-    localStorage.setItem('refresh', refresh)
-
-    // Redireciona (ex: para página principal)
-    router.push('/dashboard')
-  } catch (error) {
-    console.error('Erro no login:', error.response?.data || error.message)
-    alert('Credenciais inválidas. Tente novamente.')
-  }
-}
-</script>
-
 <style scoped>
-
+/* mantive seus estilos existentes */
 .quadrado {
   margin: 5vw auto;
-  width: 600px;
-  min-height: 400px;
-  background: #04384a5d;
+  width: 700px;
+  height: 600px;
+  background: #04384aa6;
   padding: 2rem;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .detalhes {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  margin: 20px 0 20px 0;
 }
 
 .detalhes img {
-  width: 60px;
   height: 60px;
   margin-bottom: 1rem;
 }
@@ -120,11 +139,12 @@ form {
 .lista {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 27px 0 0 0;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
+  font-size: 1.3rem;
 }
 
 .lista li {
@@ -160,11 +180,11 @@ input:focus {
   background-color: #04394A;
   color: white;
   border: none;
-  padding: 10px 30px;
+  padding: 20px 60px;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .botoes button:hover {
@@ -180,6 +200,8 @@ input:focus {
   cursor: pointer;
   font-size: 1rem;
 }
+
+.error { color: #f66; margin-top: 8px; }
 
 /*---------->RESPONSIVIDADE<----------*/
 @media (max-width: 768px) {
@@ -235,5 +257,4 @@ input:focus {
     margin: 1rem auto;
   }
 }
-
 </style>

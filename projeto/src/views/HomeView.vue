@@ -1,24 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import axios from 'axios'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
-
 const modules = [Pagination]
-const clientes = ref([])
-const router = useRouter()
 
-onMounted(async () => {
-  try {
-    const response = await axios.get('http://127.0.0.1:8000/clientes/')
-    clientes.value = response.data
-  } catch (error) {
-    console.error('Erro ao buscar clientes:', error)
-  }
-})
+
 </script>
-
 <template>
   <main>
     <div class="introducao">
@@ -33,9 +19,6 @@ onMounted(async () => {
       </p>
     </div>
 
-    <div class="clientes">
-      <!-- Conteúdo comentado -->
-    </div>
 
     <div class="carrossel">
       <swiper
@@ -47,35 +30,23 @@ onMounted(async () => {
         class="mySwiper"
       >
         <swiper-slide>
-          <div class="card1">
-            <h1>teste</h1>
-            <p>teste</p>
-            <p>teste</p>
-            <p>teste</p>
+          <div class="card1" @click="router.push('/pagina-alimentos')">
+            <h1>Alimentos</h1>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="card2">
-            <h1>teste2</h1>
-            <p>teste2</p>
-            <p>teste2</p>
-            <p>teste2</p>
+            <h1>Artesanatos</h1>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="card3">
-            <h1>teste3</h1>
-            <p>teste2</p>
-            <p>teste2</p>
-            <p>teste2</p>
+            <h1>Roupas</h1>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="card4">
-            <h1>teste4</h1>
-            <p>teste2</p>
-            <p>teste2</p>
-            <p>teste2</p>
+            <h1>Outros</h1>
           </div>
         </swiper-slide>
       </swiper>
@@ -144,6 +115,17 @@ div.introducao p.texto {
   font-size: 1.1rem;
 }
 
+.token-display {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #f1f1f1;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
 hr {
   border: none;
   height: 1.5px;
@@ -167,7 +149,12 @@ div.clientes ul {
   list-style: none;
   padding: 0;
 }
-
+.carrossel h1 {
+  font-size: 2.5rem;
+  margin: 3.2vw 0 0 0;
+  text-align: center;
+  color: #f1f1f1;
+}
 /* ===== Responsivo para até 768px ===== */
 @media (max-width: 768px) {
   .swiper-slide {

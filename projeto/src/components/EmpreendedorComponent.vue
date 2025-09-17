@@ -1,24 +1,92 @@
 <script setup>
-function handleSubmit() {
-  const nome = document.getElementById("nome").value;
-  const endereco = document.getElementById("endereco").value;
-  const telefone = document.getElementById("telefoneEmpreendedor").value;
-  const cpf = document.getElementById("cpf").value;
-  const categoria = document.getElementById("categoria").value;
-  const nomeEmpreendedor = document.getElementById("nomeEmpreendedor").value;
-  const dataNascimento = document.getElementById("dataNascimento").value;
-  const email = document.getElementById("email").value;
+import { reactive } from 'vue';
+import api from '@/api';
 
-  console.log("Enviado:", {
-    nome,
-    endereco,
-    telefone,
-    cpf,
-    categoria,
-    nomeEmpreendedor,
-    dataNascimento,
-    email
-  });
+const form = reactive({
+  nome: '',
+  email: '',
+  cpf: '',
+  telefone: '',
+  data_nascimento: '',
+  password: '',
+  role: 'empreendedor'
+});
+
+const errors = reactive({});
+
+// Formata CPF: 000.000.000-00
+function formatCPF(e) {
+  let value = e.target.value.replace(/\D/g, '');
+  if (value.length > 11) value = value.slice(0, 11);
+
+  if (value.length > 9) {
+    value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+  } else if (value.length > 6) {
+    value = value.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
+  } else if (value.length > 3) {
+    value = value.replace(/(\d{3})(\d{1,3})/, '$1.$2');
+  }
+
+  form.cpf = value;
+}
+
+function formatTelefone(e) {
+  let value = e.target.value.replace(/\D/g, '');
+  if (value.length > 11) value = value.slice(0, 11);
+  if (value.length > 6) {
+    value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+  } else if (value.length > 2) {
+    value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+  }
+  form.telefone = value;
+}
+
+function resetForm() {
+  for (const k in form) {
+    if (k === 'role') form[k] = 'empreendedor';
+    else form[k] = '';
+  }
+  for (const k in errors) delete errors[k];
+}
+
+function validateForm() {
+  for (const k in errors) delete errors[k];
+  if (!form.nome || !form.nome.trim()) errors.nome = ['Nome é obrigatório'];
+  if (!form.email || !form.email.trim()) errors.email = ['Email é obrigatório'];
+  if (!form.password) errors.password = ['Senha é obrigatória'];
+  const cpfDigits = form.cpf ? form.cpf.replace(/\D/g, '') : '';
+  if (!cpfDigits || cpfDigits.length !== 11) errors.cpf = ['CPF inválido'];
+  if (!form.telefone || !form.telefone.replace(/\D/g, '').length) errors.telefone = ['Telefone é obrigatório'];
+  if (!form.data_nascimento) errors.data_nascimento = ['Data de nascimento é obrigatória'];
+  return Object.keys(errors).length === 0;
+}
+
+async function handleSubmit() {
+  const ok = validateForm();
+  if (!ok) return;
+
+  try {
+    const fd = new FormData();
+    for (const k in form) {
+      let v = form[k];
+      if (k === 'cpf' && typeof v === 'string') v = v.replace(/\D/g, '');
+      if (k === 'telefone' && typeof v === 'string') v = v.replace(/\D/g, '');
+      if (v !== null && v !== '') fd.append(k, v);
+    }
+
+    await api.post('/usuarios/', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+    window.alert('Cadastro de empreendedor enviado com sucesso!');
+    resetForm();
+  } catch (err) {
+    const resp = err.response?.data;
+    if (resp && typeof resp === 'object') {
+      for (const k in resp) errors[k] = resp[k];
+      const summary = resp.non_field_errors || resp.detail || null;
+      if (summary) window.alert(String(summary));
+    } else {
+      window.alert('Erro ao cadastrar empreendedor.');
+    }
+  }
 }
 </script>
 
@@ -27,7 +95,7 @@ function handleSubmit() {
     <section>
       <div class="quadrado">
         <div class="detalhes">
-          <img src="/public/login-icon.png" alt="Ícone de login" />
+          <img src="/login-icon.png" alt="Ícone de login" />
           <h1>Cadastre-se como empreendedor:</h1>
         </div>
 
@@ -35,57 +103,44 @@ function handleSubmit() {
           <div class="formulario">
             <ul class="lista">
               <li>
-                <label for="nome">Nome da loja:</label>
-                <input type="text" id="nome" required>
+                <label for="nome">Nome completo:</label>
+                <input type="text" id="nome" v-model="form.nome" required />
+                <div v-if="errors.nome" style="color:#f66">{{ errors.nome.join ? errors.nome.join(', ') : errors.nome }}</div>
               </li>
               <li>
-                <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" maxlength="100" required>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" v-model="form.email" required />
+                <div v-if="errors.email" style="color:#f66">{{ errors.email.join ? errors.email.join(', ') : errors.email }}</div>
               </li>
               <li>
-                <label for="cpf">CPF/CNPJ:</label>
-                <input type="text" id="cpf" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" v-model="form.password" required minlength="6" maxlength="50" />
+                <div v-if="errors.password" style="color:#f66">{{ errors.password.join ? errors.password.join(', ') : errors.password }}</div>
               </li>
               <li>
-                <label for="categoria">Categorias:</label>
-                <input type="text" list="listaCategorias" id="categoria" required>
-                <datalist id="listaCategorias">
-                  <option value="Alimentos" />
-                  <option value="Roupas" />
-                  <option value="Artesanatos" />
-                </datalist>
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" v-model="form.cpf" @input="formatCPF" required maxlength="14" inputmode="numeric" />
+                <div v-if="errors.cpf" style="color:#f66">{{ errors.cpf.join ? errors.cpf.join(', ') : errors.cpf }}</div>
               </li>
             </ul>
 
             <ul class="lista2">
               <li>
-                <label for="nomeEmpreendedor">Nome do empreendedor:</label>
-                <input type="text" id="nomeEmpreendedor" required>
+                <label for  ="telefone">Telefone:</label>
+                <input type="tel" id="telefone" v-model="form.telefone" @input="formatTelefone" required maxlength="15" inputmode="tel" />
+                <div v-if="errors.telefone" style="color:#f66">{{ errors.telefone.join ? errors.telefone.join(', ') : errors.telefone }}</div>
               </li>
               <li>
                 <label for="dataNascimento">Data de nascimento:</label>
-                <input type="date" id="dataNascimento" required>
-              </li>
-              <li>
-                <label for="telefoneEmpreendedor">Telefone:</label>
-                <input type="tel" id="telefoneEmpreendedor" required>
-              </li>
-              <li>
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" required>
+                <input type="date" id="dataNascimento" v-model="form.data_nascimento" required />
+                <div v-if="errors.data_nascimento" style="color:#f66">{{ errors.data_nascimento.join ? errors.data_nascimento.join(', ') : errors.data_nascimento }}</div>
               </li>
             </ul>
-
-            <div class="lado-direito">
-              <label for="logo" class="upload-logo">+</label>
-              <p>Insira sua logo:</p>
-              <input type="file" id="logo" name="logo" accept="image/*" style="display: none;">
-            </div>
           </div>
 
           <div class="botoes">
             <button type="submit">Enviar</button>
-            <button type="reset">Limpar</button>
+            <button type="button" @click="resetForm">Limpar</button>
           </div>
         </form>
       </div>
@@ -96,10 +151,10 @@ function handleSubmit() {
 <style scoped>
 .quadrado {
   margin: 5vw auto;
-  width: 1400px;
+  width: 1300px;
   min-height: 600px;
-  background: #04394A;
-  border: #f1f1f1 4px solid;
+  background: #04384aa6;
+  border-radius: 20px;
   padding: 2rem;
   box-sizing: border-box;
 }
@@ -112,14 +167,13 @@ function handleSubmit() {
 }
 
 .detalhes img {
-  width: 60px;
   height: 60px;
   margin-bottom: 1rem;
 }
 
 .detalhes h1 {
   font-size: 1.4rem;
-  background-color: #08607C;
+  background-color: #04394A;
   border-radius: 20px;
   padding: 0.6rem 1.5rem;
   text-align: center;
@@ -134,7 +188,7 @@ form {
 .formulario {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
   flex-wrap: wrap;
 }
@@ -146,7 +200,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  flex: 1 1 35%;
+  flex: 1 1 45%;
   min-width: 280px;
 }
 
@@ -157,19 +211,7 @@ form {
   flex-direction: column;
 }
 
-.lado-direito {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex: 1 1 20%;
-  min-width: 160px;
-  color: white;
-  text-align: center;
-}
-
-input {
+input, select {
   border: none;
   border-bottom: 2px solid #ccc;
   background: transparent;
@@ -178,9 +220,21 @@ input {
   color: white;
 }
 
-input:focus {
+input:focus, select:focus {
   border-bottom: 2px solid #0abde3;
   outline: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+select option {
+  background: #04394A;
+  color: white;
 }
 
 .botoes {
@@ -192,29 +246,48 @@ input:focus {
 }
 
 .botoes button {
-  background-color: #08607C;
+  background-color: #04394A;
   color: white;
   border: none;
-  padding: 10px 30px;
+  padding: 15px 35px;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
-.upload-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.botoes button:hover {
   background-color: #08607C;
-  color: white;
-  font-weight: bold;
-  padding: 1rem;
-  border-radius: 10px;
-  width: 120px;
-  height: 80px;
-  cursor: pointer;
-  text-align: center;
-  font-size: 2rem;
+  transition: 0.3s;
 }
+
+/*---------->RESPONSIVIDADE<----------*/
+@media (max-width: 768px) {
+  .quadrado {
+    width: 90vw;
+    height: 100%;
+    padding: 1rem;
+  }
+
+  .formulario {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .lista, .lista2 {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .botoes {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .botoes button {
+    width: 100%;
+  }
+}
+
 </style>
