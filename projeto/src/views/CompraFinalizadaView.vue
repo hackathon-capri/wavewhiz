@@ -1,9 +1,11 @@
 <script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
 </script>
 <template>
   <main>
   <h1>COMPRA FINALIZADA</h1>
-  <button>Voltar ao Início</button>
+  <button @click="router.push('/')">Voltar ao Início</button>
   </main>
 </template>
 <style scoped>
@@ -29,5 +31,9 @@ button{
   font-weight: bold;
   border-bottom: 2px solid #08607c;
   color: #04394A;
+}
+button:hover {
+  color: #08607c;
+  border-color: #04394A;
 }
 </style>
