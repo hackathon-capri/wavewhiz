@@ -1,8 +1,9 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
+import { useRouter } from 'vue-router'
 const modules = [Pagination]
-
+const router = useRouter()
 
 </script>
 <template>
