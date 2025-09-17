@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()         
+</script>
 
 <template>
   <div class="introducao">
@@ -12,8 +15,8 @@
   </div>
     <ul>
       <li>
-        <img src="" alt="">
-        <h2>Nome da Loja</h2>
+        <img src="" alt="" @click="router.push('/loja')">
+        <h2 @click="router.push('/loja')">Nome da Loja</h2>
       </li>
     </ul>
 </template>
