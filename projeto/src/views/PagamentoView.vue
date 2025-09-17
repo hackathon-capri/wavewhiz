@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const bandeiras = [
   { valor: 'caixa', img: '/caixa-removebg-preview 1.png' },
@@ -103,13 +105,13 @@ const bandeiraSelecionada = ref('')
             </label>
           </li>
         </ul>
-
-        <button class="finalizar">Finalizar compra</button>
+        <button @click="router.push('/carrinho/pagamento/compra-finalizada')" class="finalizar">
+          Finalizar compra
+        </button>
       </div>
     </div>
   </main>
 </template>
-
 <style scoped>
 main {
   background-color: #f5f5f5;
@@ -125,7 +127,6 @@ main {
   align-items: center;
   flex-direction: row;
   gap: 0.6rem;
-
   background: #c7c3c3;
   width: 180px;
   height: 100px;

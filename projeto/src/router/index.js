@@ -52,7 +52,7 @@ const routes = [
     path: '/carrinho/pagamento/compra-finalizada',
     name: 'CompraFinalizada',
     component: () => import('@/views/CompraFinalizadaView.vue'),
-  }
+  },
 ]
 
 const router = createRouter({
