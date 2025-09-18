@@ -444,12 +444,13 @@ hr {
   border: none;
   height: 1.5px;
   background-color: white;
-  width: 100%;
+  width: 50%;
   margin: 10px 0;
 }
 div.introducaoLoja p {
   color: white;
   margin: 8px 0;
+  width: 50%;
 }
 .owner-actions {
   margin-top: 1rem;

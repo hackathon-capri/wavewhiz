@@ -22,9 +22,10 @@ onMounted(async () => {
 
 <template>
   <div class="introducao">
-        <h1>Descubra as principais <br> lojas <template v-if="categoriaNome !== ''">de <span class="categoria-nome">{{ categoriaNome }}</span></template></h1>
+        <h1>Descubra as principais lojas <template v-if="categoriaNome !== ''">de <span class="categoria-nome">{{ categoriaNome }}</span></template></h1>
   <hr/>
   <p>
+    Descubra as principais lojas do setor, reunidas em um só lugar. Encontre variedade, qualidade e praticidade para facilitar sua escolha.
   </p>
   </div>
     <div v-if="lojasStore.loading">Carregando lojas...</div>
@@ -58,7 +59,7 @@ hr {
   border: none;
   height: 1.5px;
   background-color: white;
-  width: 23%;
+  width: 15%;
   margin: 10px 0;
 }
 div.introducao p {

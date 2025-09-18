@@ -30,8 +30,7 @@ import router from '@/router';
       </div>
       </div>
       <div class="socialmedia">
-        <span class="fa-brands fa-square-instagram"></span>
-        <span class="fa-brands fa-linkedin"></span>
+        <a href="https://www.instagram.com/wavewhiz_/?igsh=MTl1bmVzNml2cm8wag%3D%3D#"><span class="fa-brands fa-square-instagram"></span></a>
       </div>
     </footer>
 </template>
@@ -104,8 +103,9 @@ footer img {
 .socialmedia span {
   cursor: pointer;
   transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+  transform 0.2s ease,
+  color 0.2s ease;
+  color: #f1f1f1;
 }
 
 /*---------->RESPONSIVIDADE<----------*/

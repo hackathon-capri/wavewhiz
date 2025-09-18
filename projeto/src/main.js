@@ -13,18 +13,18 @@ const pinia = createPinia()
 const backgroundConfigs = {
   '/': { image: "url('/teste1.png')", repeat: 'no-repeat', size: 'cover', position: 'center' },
   '/cadastro': { image: "url('/alot-shark.jpg')", repeat: 'no-repeat', size: 'cover', position: 'center' },
-  '/login': { image: "url('/alot-shark.jpg')", repeat: 'no-repeat', size: 'cover', position: 'center' },
-  '/sobre-nos': { 
-    image: "linear-gradient(to bottom, #0a6b85, #002c38)", 
-    size: 'cover', 
-    position: 'center' 
+  '/login': { image: "url('/alot-shark.jpg')", repeat: 'no-repeat', size: 'cover', position: 'center' }, 
+  '/sobre-nos': {
+    image: "linear-gradient(to bottom, #0a6b85, #002c38)",
+    size: 'cover',
+    position: 'center'
   },
   '/perfil-empreendedor': { color: '#04394a', image: '' },
-  '/lojas': { 
-    image: 'linear-gradient(to bottom, #0a6b85, #002c38)', 
-    repeat: 'no-repeat', 
-    size: 'cover', 
-    position: 'center' 
+  '/lojas': {
+    image: 'linear-gradient(to bottom, #0a6b85, #002c38)',
+    repeat: 'no-repeat',
+    size: 'cover',
+    position: 'center'
   },
   default: { image: '' }
 };
