@@ -10,40 +10,37 @@ import 'swiper/css/pagination'
 const app = createApp(App)
 const pinia = createPinia()
 
+const backgroundConfigs = {
+  '/': { image: "url('/teste1.png')", repeat: 'no-repeat', size: 'cover', position: 'center' },
+  '/cadastro': { image: "url('/alot-shark.jpg')", repeat: 'no-repeat', size: 'cover', position: 'center' },
+  '/login': { image: "url('/alot-shark.jpg')", repeat: 'no-repeat', size: 'cover', position: 'center' },
+  '/sobre-nos': { 
+    image: "linear-gradient(to bottom, #0a6b85, #002c38)", 
+    size: 'cover', 
+    position: 'center' 
+  },
+  '/perfil-empreendedor': { color: '#04394a', image: '' },
+  '/lojas': { 
+    image: 'linear-gradient(to bottom, #0a6b85, #002c38)', 
+    repeat: 'no-repeat', 
+    size: 'cover', 
+    position: 'center' 
+  },
+  default: { image: '' }
+};
+
 router.afterEach((to) => {
-  if (to.path === '/') {
-    document.body.style.backgroundImage = "url('/teste1.png')"
-    document.body.style.backgroundRepeat = 'no-repeat'
-    document.body.style.backgroundSize = 'cover'
-    document.body.style.backgroundPosition = 'center'
-  } else if (to.path === '/cadastro') {
-    document.body.style.backgroundImage = "url('/alot-shark.jpg')"
-    document.body.style.backgroundRepeat = 'no-repeat'
-    document.body.style.backgroundSize = 'cover'
-    document.body.style.backgroundPosition = 'center'
-  } else if (to.path === '/login') {
-    document.body.style.backgroundImage = "url('/alot-shark.jpg')"
-    document.body.style.backgroundRepeat = 'no-repeat'
-    document.body.style.backgroundSize = 'cover'
-    document.body.style.backgroundPosition = 'center'
-  } else if (to.path === '/sobre-nos') {
-    document.body.style.backgroundImage =
-      "linear-gradient(to bottom, #0a6b85, #002c38), url('/alot-shark.jpg')"
-    document.body.style.backgroundSize = 'cover'
-    document.body.style.backgroundPosition = 'center'
-  } else if (to.path === '/perfil-empreendedor') {
-    document.body.style.backgroundColor = '#04394a'
-    document.body.style.backgroundImage = ''
-  } else if (to.path === '/pagina-alimentos') {
-    document.body.style.backgroundImage =
-      'linear-gradient(to bottom, #04394A 0%, #04394A 40%, #F5F5F5 40%, #F5F5F5 100%)'
-    document.body.style.backgroundRepeat = 'no-repeat'
-    document.body.style.backgroundSize = 'cover'
-    document.body.style.backgroundPosition = 'center'
+  const config = backgroundConfigs[to.path] || backgroundConfigs.default;
+  document.body.style.backgroundImage = config.image || '';
+  document.body.style.backgroundRepeat = config.repeat || '';
+  document.body.style.backgroundSize = config.size || '';
+  document.body.style.backgroundPosition = config.position || '';
+  if (config.color) {
+    document.body.style.backgroundColor = config.color;
   } else {
-    document.body.style.backgroundImage = ''
+    document.body.style.backgroundColor = '';
   }
-})
+});
 
 app.use(pinia)
 app.use(router)

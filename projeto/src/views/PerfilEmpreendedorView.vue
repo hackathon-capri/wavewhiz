@@ -2,8 +2,11 @@
 import { ref, onMounted } from 'vue'
 import api from '@/api'
 import router from '@/router'
+import { useLojasStore } from '../api/lojas.js'
 
 const perfil = ref({})
+const lojasStore = useLojasStore()
+const minhasLojas = ref([])
 
 onMounted(async () => {
   try {
@@ -11,11 +14,13 @@ onMounted(async () => {
     if (user.id) {
       const res = await api.get(`/usuarios/${user.id}/`)
       perfil.value = res.data
+      // Fetch stores by empreendedor
+      minhasLojas.value = await lojasStore.fetchLojasByEmpreendedor(user.id)
     } else {
       console.error('Usuário não encontrado no localStorage')
     }
   } catch (err) {
-    console.error('Erro ao buscar perfil:', err)
+    console.error('Erro ao buscar perfil ou lojas:', err)
   }
 })
 
@@ -55,16 +60,27 @@ const logout = () => {
           <li>
             <p>Data de Nascimento: {{ perfil.data_nascimento }}</p>
           </li>
-          <li>
-            <p>Role: {{ perfil.role }}</p>
-          </li>
         </ul>
       </div>
     </div>
     <div class="botoes">
+      <button @click="router.push('/cadastrar-loja')">Cadastrar Loja</button>
       <button>Editar Dados</button>
       <button>Adicionar itens</button>
       <button @click="logout">Logout</button>
+    </div>
+    <div class="lojas-section">
+      <h2>Suas Lojas</h2>
+      <div v-if="minhasLojas.length === 0" class="no-lojas">
+        Você ainda não cadastrou nenhuma loja.
+      </div>
+      <div v-else class="lojas-list">
+        <div v-for="loja in minhasLojas" :key="loja.id" class="loja-item" @click="router.push(`/loja/${loja.id}`)">
+          <img :src="loja.imagem || '/placeholder.jpg'" :alt="loja.nome" />
+          <h3>{{ loja.nome }}</h3>
+          <p>{{ loja.descricao }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -130,6 +146,64 @@ const logout = () => {
 .botoes button:hover {
   background-color: #0e98c2;
   transition: 0.3s;
+}
+
+.lojas-section {
+  margin-top: 3rem;
+}
+
+.lojas-section h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.no-lojas {
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.lojas-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.loja-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 250px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.loja-item:hover {
+  transform: scale(1.05);
+}
+
+.loja-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.loja-item h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.loja-item p {
+  color: #f1f1f1;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 /*---------->RESPONSIVIDADE<----------*/

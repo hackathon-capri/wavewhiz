@@ -2,9 +2,17 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
 import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue';
+import { useLojasStore } from '../api/lojas.js';
+
 const modules = [Pagination]
 const router = useRouter()
+const lojasStore = useLojasStore();
+const categorias = ref([]);
 
+onMounted(async () => {
+  categorias.value = await lojasStore.fetchCategorias();
+});
 </script>
 <template>
   <main>
@@ -31,23 +39,13 @@ const router = useRouter()
         class="mySwiper"
       >
         <swiper-slide>
-          <div class="card1" @click="router.push('/pagina-alimentos')">
-            <h1>Alimentos</h1>
+          <div class="categoria-card" @click="router.push('/lojas')">
+            <h1>Todas</h1>
           </div>
         </swiper-slide>
-        <swiper-slide>
-          <div class="card2">
-            <h1>Artesanatos</h1>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="card3">
-            <h1>Roupas</h1>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="card4">
-            <h1>Outros</h1>
+        <swiper-slide v-for="categoria in categorias" :key="categoria.id">
+          <div class="categoria-card" @click="router.push(`/lojas?categoria=${categoria.id}`)">
+            <h1>{{ categoria.nome }}</h1>
           </div>
         </swiper-slide>
       </swiper>
@@ -71,6 +69,21 @@ const router = useRouter()
   justify-content: center;
   align-items: center;
   border-radius: 2vw;
+  padding: 3%;
+}
+
+.categoria-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.categoria-card h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #f1f1f1;
 }
 
 .swiper-slide img {
@@ -150,28 +163,20 @@ div.clientes ul {
   list-style: none;
   padding: 0;
 }
-.carrossel h1 {
-  font-size: 2.5rem;
-  margin: 3.2vw 0 0 0;
-  text-align: center;
-  color: #f1f1f1;
-}
 /*---------->RESPONSIVIDADE<----------*/
 @media (max-width: 1366px) { /*Notebooks*/
-  .swiper {
-    width: 100%;
-    padding: 0;
+  .carrossel {
+    gap: 1vw;
   }
 
-  .swiper-slide {
-    font-size: 16px;
-    padding: 10px;
-    margin: 2vw 0;
+  .categoria-card {
+    padding: 1.5vw;
+    min-width: 120px;
   }
 
-  .carrossel h1 {
+  .categoria-card h1 {
     font-size: 2rem;
-    margin-bottom: 3vw;
+    margin: 0;
   }
 
   div.introducao {
@@ -208,10 +213,13 @@ div.clientes ul {
 }
 
 @media (max-width: 768px) { /*Celulares*/
-  .swiper-slide {
-    font-size: 15px;
-    padding: 15px;
-    margin: 3vw 0 0 0;
+  .categoria-card {
+    padding: 3vw;
+    min-width: 100px;
+  }
+
+  .categoria-card h1 {
+    font-size: 1.5rem;
   }
 
   div.introducao {

@@ -44,22 +44,33 @@ const routes = [
     component: () => import('@/views/PerfilEmpreendedorView.vue'),
   },
   {
+    path: '/cadastrar-loja',
+    name: 'CadastrarLoja',
+    component: () => import('@/views/LojaCadastroView.vue'),
+  },
+  {
     path: '/perfil-cliente',
     name: 'PerfilCliente',
     component: () => import('@/views/PerfilClienteView.vue'),
   },
   {
-    path: '/pagina-alimentos',
-    name: 'PaginaAlimentos',
-    component: () => import('@/views/PaginaAlimentosView.vue'),
+    path: '/lojas',
+    name: 'Lojas',
+    component: () => import('@/views/LojasView.vue'),
   },
     { path: '/carrinho/pagamento/compra-finalizada',
     name: 'CompraFinalizada',
     component: () => import('@/views/CompraFinalizadaView.vue'),
   },
-   { path: '/loja',
+   { path: '/loja/:id',
     name: 'Loja',
     component: () => import('@/views/LojaView.vue'),
+    props: true,
+  },
+  { path: '/loja/:id/cadastrar-produto',
+    name: 'CadastrarProduto',
+    component: () => import('@/views/ProdutoCadastroView.vue'),
+    props: true,
   }
 ]
 
